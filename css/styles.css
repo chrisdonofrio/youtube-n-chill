@@ -1,3 +1,11 @@
 .nav-title{
   margin-top: 10px;
 }
+
+.searchInput{
+width: 150px;
+}
+
+.searchBtn{
+  margin-left: 10px;
+}
