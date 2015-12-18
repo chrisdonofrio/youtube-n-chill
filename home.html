@@ -3,6 +3,13 @@
 <head>
   <title>YouTube N Chill</title>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <!-- jQuery -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+  <!-- Firebase -->
+  <script src='https://cdn.firebase.com/js/client/2.0.2/firebase.js'></script>
+  <!-- Firechat -->
+  <link rel='stylesheet' href='https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.css' />
+  <script src='https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.js'></script>
 </head>
 <body>
   <div class="container">
@@ -22,25 +29,19 @@
         </div>
       </div>
       <div class="col-md-6">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/bBxAa0XA1tc" frameborder="0" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/bBxAa0XA1tc" frameborder="0" allowfullscreen></iframe>
       </div>
+      
       <!--Firebase Chat -->
       <div class="col-md-3">
         <div class="panel panel-default">
           <div class="panel-body">
-            <div class="example-chat l-demo-container">
-              <div class='example-chat-toolbar'>
-                <label for="nameInput">Username:</label>
-                <input type='text' id='nameInput' placeholder='enter a username...'>
-              </div>
-              <ul id='example-messages' class="example-chat-messages"></ul>
-              <footer>
-                <input type='text' id='messageInput'  placeholder='Type a message...'>
-              </footer>
+              <div id="firechat-wrapper"></div>
             </div>
           </div>
         </div>
       </div>
+      
     
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
@@ -52,8 +53,6 @@
       </div>    
     </div>
   </div>
-  <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
   <script type="text/javascript" src="firebaseChat.js"></script>
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
 </body>
 </html>
