@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>YouTube N Chill</title>
+ 
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- Firebase -->
+  <script src='https://cdn.firebase.com/js/client/2.0.2/firebase.js'></script>
+  <!-- Firechat -->
+  <link rel='stylesheet' href='https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.css' />
+  <script src='https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.js'></script>
 </head>
+
 <body>
   <div class="container">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-            <h3 class="nav-title">YouTube N Chill</h3>
+            <h3>YouTube N Chill</h3>
         </div>
       </div>
     </nav>
@@ -23,16 +32,19 @@
         </div>
       </div>
       <div class="col-md-6">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/bBxAa0XA1tc" frameborder="0" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/bBxAa0XA1tc" frameborder="0" allowfullscreen></iframe>
       </div>
+      
+      <!--Firebase Chat -->
       <div class="col-md-3">
         <div class="panel panel-default">
           <div class="panel-body">
-            Chat
+              <div id="firechat-wrapper"></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <div class="panel panel-default">
@@ -43,5 +55,6 @@
       </div>    
     </div>
   </div>
+  <script type="text/javascript" src="firebaseChat.js"></script>
 </body>
 </html>
