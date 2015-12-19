@@ -17,22 +17,4 @@ $(document).ready(function() {
     $(".urlInput").hide();
     $(".startVideoUrlBtn").hide();
   })
-
-
-function loadAPIClientInterfaces() {
-  gapi.client.load('youtube', 'v3', function() {
-    gapi.client.load();
-    gapi.client.setApiKey(AIzaSyDh7vcT2FXjwM9cLOpOq8zOZ52MGr-TVtQ)
-  });
-}
-
-loadAPIClientInterfaces();
-
-/*
-  $.ajax({
-    type: "GET",
-    url: "https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.search.list?part=snippet&order=viewCount&q=skateboarding+dog&type=video&videoDefinition=high&key=AIzaSyDh7vcT2FXjwM9cLOpOq8zOZ52MGr-TVtQ",
-  });
-
-*/
 });
