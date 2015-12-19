@@ -6,8 +6,12 @@
 width: 150px;
 }
 
-.urlnput{
-width: 150px;
+.urlInput{
+width: 350px;
+}
+
+.startVideoUrlBtn{
+  margin-left: 10px;
 }
 
 .searchBtn{
