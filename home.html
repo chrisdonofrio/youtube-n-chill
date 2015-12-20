@@ -27,6 +27,7 @@
         
       </div>
       <input type="text" class="urlInput" placeholder="Enter Video URL Here..." /><button class="btn startVideoUrlBtn btn-primary">Choose Starting Video</button>
+       <input type="text" class="urlQueueInput" placeholder="Enter Video URL Here..." /><button class="btn addVideoUrlBtn btn-primary">Add Video to Queue</button>
       </div>
       <div class="col-md-3">
         <div class="panel panel-default">
@@ -57,9 +58,6 @@
     return (match&&match[7].length==11)? match[7] : false;
   }
 
-
-
-
   // create youtube player
   var player;
   function onYouTubePlayerAPIReady() {
@@ -74,7 +72,10 @@
         'onStateChange': onPlayerStateChange
       }
     });
+    $(".urlInput").hide();
+    $(".startVideoUrlBtn").hide();
     })
+
   }
 
   // autoplay video
@@ -83,7 +84,7 @@
   }
 
   // when video ends
-  function onPlayerStateChange(event) {        
+  function onPlayerStateChange(event) {      
     if(event.data === 0) {            
         alert('done');
     }
