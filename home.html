@@ -23,7 +23,9 @@
         </div>
       </div>
       <div class="col-md-6 videoDiv">
-      <div id="player"></div>
+      <div id="player">
+        
+      </div>
       <input type="text" class="urlInput" placeholder="Enter Video URL Here..." /><button class="btn startVideoUrlBtn btn-primary">Choose Starting Video</button>
       </div>
       <div class="col-md-3">
@@ -44,8 +46,51 @@
       </div>    
     </div>
   </div>
-  <script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
+
+  <script src="http://www.youtube.com/player_api"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+  <script>
+  function youtube_parser(url){
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    return (match&&match[7].length==11)? match[7] : false;
+  }
+
+
+
+
+  // create youtube player
+  var player;
+  function onYouTubePlayerAPIReady() {
+    $(".startVideoUrlBtn").on("click", function(){
+    videoId = youtube_parser($(".urlInput").val());
+    player = new YT.Player('player', {
+      height: '315',
+      width: '560',
+      videoId:  videoId,
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+    })
+  }
+
+  // autoplay video
+  function onPlayerReady(event) {
+    event.target.playVideo();
+  }
+
+  // when video ends
+  function onPlayerStateChange(event) {        
+    if(event.data === 0) {            
+        alert('done');
+    }
+  }
+</script>
+
+ 
   <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
