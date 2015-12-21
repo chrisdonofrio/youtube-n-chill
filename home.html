@@ -10,7 +10,7 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-            <h3 class="nav-title">YouTube N Chill</h3>
+          <h3 class="nav-title">YouTube N Chill</h3>
         </div>
       </div>
     </nav>
@@ -23,11 +23,18 @@
         </div>
       </div>
       <div class="col-md-6 videoDiv">
-      <div id="player">
-        
-      </div>
-      <input type="text" class="urlInput" placeholder="Enter Video URL Here..." /><button class="btn startVideoUrlBtn btn-primary">Choose Starting Video</button>
-       <input type="text" class="urlQueueInput" placeholder="Enter Video URL Here..." /><button class="btn addVideoUrlBtn btn-primary">Add Video to Queue</button>
+        <div id="player"></div>
+        <input type="text" class="urlInput" placeholder="Enter Video URL Here..." /><button class="btn startVideoUrlBtn btn-primary">Choose Starting Video</button>
+        <div class="alert alert-danger noTextAlertStart" role="alert">
+          Please Enter a valid YouTube URL
+        </div>
+        <input type="text" class="urlQueueInput" placeholder="Enter Video URL Here..." /><button class="btn addVideoUrlBtn btn-primary">Add Video to Queue</button>
+        <div class="alert alert-info videoAddedAlert" role="alert">
+         Added to Queue!
+        </div>
+        <div class="alert alert-danger noTextAlertAdded" role="alert">
+         Please Enter a valid YouTube URL
+        </div>
       </div>
       <div class="col-md-3">
         <div class="panel panel-default">
@@ -52,6 +59,12 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
   <script>
+  $(".noTextAlertStart").hide();
+
+  //link to firebase database
+  var videoDB =  new Firebase("https://dazzling-fire-1875.firebaseio.com/");
+
+  //takes youtube URL and converts it to video ID
   function youtube_parser(url){
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = url.match(regExp);
@@ -62,20 +75,29 @@
   var player;
   function onYouTubePlayerAPIReady() {
     $(".startVideoUrlBtn").on("click", function(){
-    videoId = youtube_parser($(".urlInput").val());
-    player = new YT.Player('player', {
-      height: '315',
-      width: '560',
-      videoId:  videoId,
-      events: {
-        'onReady': onPlayerReady,
-        'onStateChange': onPlayerStateChange
+      url = $(".urlInput").val();
+      videoId = youtube_parser($(".urlInput").val());
+      if (videoId === false){
+        $(".noTextAlertStart").slideDown().delay(1500).slideUp();
+      }else{
+        var videoIdRef = videoDB.child("videoIds");
+        videoIdRef.push({
+          id: videoId,
+          url: url
+        });
+        player = new YT.Player('player', {
+          height: '315',
+          width: '560',
+          videoId:  videoId,
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+        $(".urlInput").hide();
+        $(".startVideoUrlBtn").hide();
       }
-    });
-    $(".urlInput").hide();
-    $(".startVideoUrlBtn").hide();
     })
-
   }
 
   // autoplay video
