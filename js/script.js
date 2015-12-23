@@ -31,7 +31,6 @@ $(document).ready(function() {
   videoDB.on("child_added", function(snapshot, prevChildKey) {
     var newVideo = snapshot.val();
     console.log(newVideo.video.id);
-    console.log("Previous Post ID: " + prevChildKey);
   });
 
   /*

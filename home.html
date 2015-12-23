@@ -60,9 +60,28 @@
   <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
   <script>
   $(".noTextAlertStart").hide();
+  queue = 1;
 
   //link to firebase database
   var videoDB =  new Firebase("https://dazzling-fire-1875.firebaseio.com/");
+
+
+  videoDB.orderByChild("numInQueue").limitToFirst(1).on("child_added", function(snapshot, prevChildKey) {
+    firstVideo = snapshot.val();
+    videoId = firstVideo.video.id;
+    console.log(videoId);
+    player = new YT.Player('player', {
+      height: '315',
+      width: '560',
+      videoId:  videoId,
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+    $(".urlInput").hide();
+    $(".startVideoUrlBtn").hide();
+  })
 
   //takes youtube URL and converts it to video ID
   function youtube_parser(url){
@@ -83,21 +102,28 @@
         queueNum = 1;
         var videoIdRef = videoDB;
         videoIdRef.push({
-          id: videoId,
-          url: url,
-          numInQueue: queueNum
-        }).setPriority(queueNum);
-        player = new YT.Player('player', {
-          height: '315',
-          width: '560',
-          videoId:  videoId,
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
+          video: {
+            id: videoId,
+            url: url,
+            numInQueue: queueNum
           }
-        });
-        $(".urlInput").hide();
-        $(".startVideoUrlBtn").hide();
+        })
+        videoDB.orderByChild("numInQueue").limitToFirst(1).on("child_added", function(snapshot, prevChildKey) {
+          firstVideo = snapshot.val();
+          videoId = firstVideo.video.id;
+          console.log(videoId);
+          player = new YT.Player('player', {
+            height: '315',
+            width: '560',
+            videoId:  videoId,
+            events: {
+              'onReady': onPlayerReady,
+              'onStateChange': onPlayerStateChange
+            }
+          });
+          $(".urlInput").hide();
+          $(".startVideoUrlBtn").hide();
+        })
       }
     })
   }
@@ -108,9 +134,9 @@
   }
 
   // when video ends
-  function onPlayerStateChange(event) {      
+  function onPlayerStateChange(event) {     
     if(event.data === 0) {
-    console.log(videoDB.orderByChild("numInQueue"));            
+      queue++;
       alert('done');
     }
   }
