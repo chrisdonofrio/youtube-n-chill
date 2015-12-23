@@ -16,22 +16,23 @@ $(document).ready(function() {
     }else{
       url = $(".urlQueueInput").val();
       videoId = youtube_parser($(".urlQueueInput").val());
-      var videoIdRef = videoDB.child("videoIds");
+      var videoIdRef = videoDB;
       videoIdRef.push({
         video: {
           id: videoId,
           url: url
         }
       });
-      videoDB.on("child_added", function(snapshot, prevChildKey) {
-        var newPost = snapshot.val();
-        console.log(newPost.id);
-        console.log("Previous Post ID: " + prevChildKey);
-      });
       $(".urlQueueInput").val("");
       $(".videoAddedAlert").slideDown().delay(1500).slideUp();
     }
   });
+
+  videoDB.on("child_added", function(snapshot, prevChildKey) {
+        var newVideo = snapshot.val();
+        console.log(newVideo.video.id);
+        console.log("Previous Post ID: " + prevChildKey);
+      });
 
   /*
   $(".startVideoUrlBtn").on("click", function(){

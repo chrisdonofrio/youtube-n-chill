@@ -80,11 +80,13 @@
       if (videoId === false){
         $(".noTextAlertStart").slideDown().delay(1500).slideUp();
       }else{
-        var videoIdRef = videoDB.child("videoIds");
+        queueNum = 1;
+        var videoIdRef = videoDB;
         videoIdRef.push({
           id: videoId,
-          url: url
-        });
+          url: url,
+          numInQueue: queueNum
+        }).setPriority(queueNum);
         player = new YT.Player('player', {
           height: '315',
           width: '560',
@@ -107,8 +109,9 @@
 
   // when video ends
   function onPlayerStateChange(event) {      
-    if(event.data === 0) {            
-        alert('done');
+    if(event.data === 0) {
+    console.log(videoDB.orderByChild("numInQueue"));            
+      alert('done');
     }
   }
 </script>
