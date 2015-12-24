@@ -69,7 +69,6 @@
   videoDB.orderByChild("numInQueue").limitToFirst(1).on("child_added", function(snapshot, prevChildKey) {
     firstVideo = snapshot.val();
     videoId = firstVideo.video.id;
-    console.log(videoId);
     player = new YT.Player('player', {
       height: '315',
       width: '560',

@@ -27,23 +27,4 @@ $(document).ready(function() {
       $(".videoAddedAlert").slideDown().delay(1500).slideUp();
     }
   });
-
-  videoDB.on("child_added", function(snapshot, prevChildKey) {
-    var newVideo = snapshot.val();
-    console.log(newVideo.video.id);
-  });
-
-  /*
-  $(".startVideoUrlBtn").on("click", function(){
-    var videoId = youtube_parser($(".urlInput").val());
-    var player = $("<iframe>");
-    player.attr("width", "560").attr("height", "315")
-    .attr("src", "https://www.youtube.com/embed/"+videoId)
-    .attr("frameborder", "0")
-    .attr("allowfullscreen");
-    $(".videoDiv").append(player);
-    $(".urlInput").hide();
-    $(".startVideoUrlBtn").hide();
-  })
-*/
 });
