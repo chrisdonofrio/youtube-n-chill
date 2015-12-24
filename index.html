@@ -6,6 +6,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <!-- Firebase -->
   <script src='https://cdn.firebase.com/js/client/2.0.2/firebase.js'></script>
+  <script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js"></script>
   <!-- Firechat -->
   <script src='https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.js'></script>
   <link rel='stylesheet' href='https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.css'/>
@@ -37,29 +38,12 @@
       <div class="col-md-3">
         <div class="panel panel-default">
           <div class="panel-body">
-            
-            <div class="login">
-              <h4>Login to Chat</h4>
-              <form>
-                <p><input type="text" name="login" value="" placeholder="Username" id="loginUsername"></p>
-                <p><input type="password" name="password" value="" placeholder="Password" id="loginPassword"></p>
-                <p class="submit"><input type="submit" name="commit" value="Login" onclick='loginUser(); return false;'></p>
-              </form>
-            </div>
-          
-            <div class="register">
-              <h4>Register on Chat</h4>
-              <form>
-                <p><input type="text" name="login" value="" placeholder="Username" id="registerUsername"></p>
-                <p><input type="password" name="password" value="" placeholder="Password" 
-                id="registerPassword"></p>
-                <p class="submit"><input type="submit" name="commit" value="Register" onclick='registerUser(); return false;'></p>
-              </form>
-            </div>
-            <div id='firechat-wrapper'></div>
-          </div> 
+           <div id='firechat-wrapper'>
+              <a href='#' id="logIn">Login</a>
+            </div> 
+          </div>
         </div>  
-      </div>
+      </div>    
       
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
