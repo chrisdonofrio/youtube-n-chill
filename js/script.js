@@ -3,7 +3,7 @@ var database = new Firebase("https://dazzling-fire-1875.firebaseio.com/")
 var videoDB =  new Firebase("https://dazzling-fire-1875.firebaseio.com/videos");
 
 //pulls first video in queue, if there is one, from DB and plays it
-videoDB.orderByChild("numInQueue").limitToFirst(1).on("child_added", function(snapshot) {
+videoDB.limitToFirst(1).on("child_added", function(snapshot) {
   firstVideo = snapshot.val();
   videoId = firstVideo.vidId;
   player = new YT.Player('player', {
@@ -33,14 +33,12 @@ function onYouTubePlayerAPIReady() {
     if (videoId === false){
       $(".noTextAlertStart").slideDown().delay(1500).slideUp();
     }else{
-      queueNum = 1;
       var videoIdRef = database.child("videos");
       videoIdRef.push({
           vidId: videoId,
-          url: url,
-          numInQueue: queueNum
+          url: url
       })
-      videoDB.orderByChild("numInQueue").limitToFirst(1).on("child_added", function(snapshot) {
+      videoDB.limitToFirst(1).on("child_added", function(snapshot) {
         firstVideo = snapshot.val();
         key = snapshot.key();
         console.log(key);
