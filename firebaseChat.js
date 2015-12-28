@@ -1,5 +1,4 @@
-
-    // Create a new Firebase reference, and a new instance of the Login client
+ // Create a new Firebase reference, and a new instance of the Login client
     var ref = new Firebase('https://scorching-inferno-8276.firebaseio.com/');
  
     // initialize the chat 
@@ -36,6 +35,3 @@
         }
       });
     }
-
-
-
