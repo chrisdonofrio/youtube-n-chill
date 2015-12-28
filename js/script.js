@@ -2,6 +2,8 @@
 var database = new Firebase("https://dazzling-fire-1875.firebaseio.com/")
 var currentVideo = new Firebase("https://dazzling-fire-1875.firebaseio.com/currentVideo")
 var queuedVideos =  new Firebase("https://dazzling-fire-1875.firebaseio.com/queuedVideos");
+var timer = new Firebase("https://dazzling-fire-1875.firebaseio.com/timer")
+var count = 0;
 
 //takes YouTube URL and returns video ID
 function youtube_parser(url){
@@ -23,15 +25,13 @@ function onYouTubePlayerAPIReady() {
       currentVideoRef.set({
         vidId: videoId,
         url: url,
-        counter: 0
       })
-      currentVideo.limitToFirst(1).on("child_added", function(snapshot) {
-        firstVideo = snapshot.val();
-        key = snapshot.key();
-        console.log(key);
-        console.log(snapshot.val());
-        videoId = snapshot.val().vidId;
-        console.log(videoId);
+      var timerRef = database.child("timer");
+        timerRef.set({
+        seconds: 0
+      })
+      currentVideo.limitToLast(1).on("child_added", function(snapshot) {
+        videoId = snapshot.val();
         player = new YT.Player('player', {
           height: '315',
           width: '560',
@@ -51,30 +51,51 @@ function onYouTubePlayerAPIReady() {
 
 // autoplay video
 function onPlayerReady(event) {
+  alert("hit")
   event.target.playVideo();
 }
 
+//increments timer by one second
+function timerIncrement(){
+  count++;
+  timer.set({
+    seconds: count
+  })
+}
+ 
 // when video ends
 function onPlayerStateChange(event) {
-  /** YouTube API
+  /* 
+  ******YouTube API reference******
+    for event.data:
     -1 (unstarted)
     0 (ended)
     1 (playing)
     2 (paused)
     3 (buffering)
     5 (video cued)
-  **/
+  */
   //when video ends
-  if(event.data === 0) {
+  if (event.data === 1){
+    //runs timer increment function once every second
+    var counter = setInterval(timerIncrement, 1000)
+  }else if(event.data === 0) {
     $("iframe").attr("src", "");
     $("iframe").remove();
     $(".urlInput").show();
+    $(".urlInput").val("");
     $(".startVideoUrlBtn").show();
+    clearInterval(counter);
+    timer.set({
+      seconds: 0
+    })
+    currentVideo.remove();
   }
   //if a video has been added to queued video list this will run otherwise it will not
   queuedVideos.limitToFirst(1).on("child_added", function(snapshot) { 
     if(event.data === 0) {
-      event.data = 1;
+      //change event data so if statement will not return true everytime a child is added after video has ended
+      event.data = 6;
       $(".urlInput").hide();
       $(".startVideoUrlBtn").hide();
       nextVideo = snapshot.val();
@@ -82,7 +103,6 @@ function onPlayerStateChange(event) {
       currentVideo.set({
         url: nextVideo.url,
         vidId: nextVideo.vidId,
-        counter: 0
       });
       var nextVideoInfoKey = snapshot.key();
       var queuedRef = database.child("queuedVideos");
@@ -102,11 +122,8 @@ $(document).ready(function() {
   $(".noTextAlertAdded").hide();
 
  //pulls current video, if there is one, from DB and plays it
-  database.limitToFirst(1).on("child_added", function(snapshot) {
-    database = snapshot.val();
-    console.log(database);
-    videoId = database.vidId;
-    console.log(videoId);
+  currentVideo.limitToLast(1).on("child_added", function(snapshot) {
+    videoId = snapshot.val();
     player = new YT.Player('player', {
       height: '315',
       width: '560',
