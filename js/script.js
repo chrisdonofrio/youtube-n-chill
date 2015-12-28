@@ -22,7 +22,8 @@ function onYouTubePlayerAPIReady() {
       var currentVideoRef = database.child("currentVideo");
       currentVideoRef.set({
         vidId: videoId,
-        url: url
+        url: url,
+        counter: 0
       })
       currentVideo.limitToFirst(1).on("child_added", function(snapshot) {
         firstVideo = snapshot.val();
@@ -55,6 +56,14 @@ function onPlayerReady(event) {
 
 // when video ends
 function onPlayerStateChange(event) {
+  /** YouTube API
+    -1 (unstarted)
+    0 (ended)
+    1 (playing)
+    2 (paused)
+    3 (buffering)
+    5 (video cued)
+  **/
   //when video ends
   if(event.data === 0) {
     $("iframe").attr("src", "");
@@ -72,7 +81,8 @@ function onPlayerStateChange(event) {
       console.log(nextVideo)
       currentVideo.set({
         url: nextVideo.url,
-        vidId: nextVideo.vidId
+        vidId: nextVideo.vidId,
+        counter: 0
       });
       var nextVideoInfoKey = snapshot.key();
       var queuedRef = database.child("queuedVideos");
@@ -107,6 +117,10 @@ $(document).ready(function() {
         'onStateChange': onPlayerStateChange
       }
     });
+    //************
+    //seek to correct time
+    //************
+
     $(".urlInput").hide();
     $(".startVideoUrlBtn").hide();
   })
