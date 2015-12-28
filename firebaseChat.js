@@ -5,14 +5,14 @@
     // initialize the chat 
     function initChat(authData) {
       var chat = new FirechatUI(ref, document.getElementById('firechat-wrapper'));
-      chat.setUser(authData.uid, authData.uid.substr(10, 8));  //want to setUser to password.email, but it's not showing in object.
+      chat.setUser(authData.uid, authData.password.email.substr(0, authData.password.email.indexOf('@')));  //want to setUser to password.email, but it's not showing in object.
     }
 
     // Creating a user account 
     function registerUser() {
       ref.createUser({
         email    : $("#registerUsername").val(),  //pulled from form
-        password : $("#registerPassword").val()
+        password : $("#registerPassword").val(),
       }, function(error, userData) {
         if (error) {
           console.log("Error creating user:", error);
