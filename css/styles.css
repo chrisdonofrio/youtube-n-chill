@@ -6,6 +6,28 @@
 width: 150px;
 }
 
+.urlInput{
+width: 350px;
+}
+
+.startVideoUrlBtn{
+  margin-left: 10px;
+}
+
+.urlQueueInput{
+  margin-top: 10px;
+  width: 350px;
+}
+
+.addVideoUrlBtn{
+  margin-left: 10px;
+}
+
+.alert{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .searchBtn{
   margin-left: 10px;
 }
