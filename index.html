@@ -53,19 +53,19 @@
             <div class="login">
               <h4>Login to Chat</h4>
               <form>
-                <p><input type="text" name="login" value="" placeholder="Username" id="username"></p>
-                <p><input type="password" name="password" value="" placeholder="Password" id="loginPassword"></p>
-                <p class="submit"><input type="submit" name="commit" value="Login" onclick='loginUser(); return false;'></p>
+                <p><input type="text" name="login" placeholder="User Email" id="loginEmail"></p>
+                <p><input type="password" name="password" placeholder="Password" id="loginPassword"></p>
+                <p class="submit"><input type="submit" name="commit" value="Login" id="loginAction"></p>
               </form>
             </div>
           <!--New user registration -->
             <div class="register">
               <h4>Register on Chat</h4>
               <form>
-                <p><input type="text" name="login" value="" placeholder="Username" id="registerUsername"></p>
-                <p><input type="password" name="password" value="" placeholder="Password" 
+                <p><input type="text" name="login" placeholder="User Email" id="registerUsername"></p>
+                <p><input type="password" name="password" placeholder="Password" 
                 id="registerPassword"></p>
-                <p class="submit"><input type="submit" name="commit" value="Register" onclick='registerUser(); return false;'></p>
+                <p class="submit"><input type="submit" value="Register" id="registerAction"></p>
               </form>
             </div>
             <!--firechat initializing -->
@@ -87,7 +87,6 @@
 
   <script src="http://www.youtube.com/player_api"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
   <script type="text/javascript" src="firebaseChat.js"></script>
 

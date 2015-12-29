@@ -8,7 +8,8 @@
     }
 
     // Creating a user account 
-    function registerUser() {
+    $("#registerAction").click(function(e) {
+      event.preventDefault();
       ref.createUser({
         email    : $("#registerUsername").val(),  //pulled from form
         password : $("#registerPassword").val(),
@@ -19,12 +20,13 @@
           console.log("Successfully created user account with uid:", userData.uid);
         }
       });
-    }
+    })
 
     // Login user 
-    function loginUser() {
+    $("#loginAction").click(function(e) {
+      event.preventDefault();
       ref.authWithPassword({
-        email    : $("#username").val(), //pulled from form
+        email    : $("#loginEmail").val(), //pulled from form
         password : $("#loginPassword").val()
       }, function(error, authData) {
         if (error) {
@@ -34,4 +36,4 @@
           initChat(authData);
         }
       });
-    }
+    })
