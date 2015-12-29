@@ -3,7 +3,6 @@ var database = new Firebase("https://dazzling-fire-1875.firebaseio.com/")
 var currentVideo = new Firebase("https://dazzling-fire-1875.firebaseio.com/currentVideo")
 var queuedVideos =  new Firebase("https://dazzling-fire-1875.firebaseio.com/queuedVideos");
 var timer = new Firebase("https://dazzling-fire-1875.firebaseio.com/timer")
-var count = 0;
 
 //takes YouTube URL and returns video ID
 function youtube_parser(url){
@@ -15,54 +14,29 @@ function youtube_parser(url){
 //create youtube player
 var player;
 function onYouTubePlayerAPIReady() {
-  $(".startVideoUrlBtn").on("click", function(){
-    url = $(".urlInput").val();
-    videoId = youtube_parser($(".urlInput").val());
-    if (videoId === false){
-      $(".noTextAlertStart").slideDown().delay(1500).slideUp();
-    }else{
-      var currentVideoRef = database.child("currentVideo");
-      currentVideoRef.set({
-        vidId: videoId,
-        url: url,
-      })
-      var timerRef = database.child("timer");
-        timerRef.set({
-        seconds: 0
-      })
-      currentVideo.limitToLast(1).on("child_added", function(snapshot) {
-        videoId = snapshot.val();
-        player = new YT.Player('player', {
-          height: '315',
-          width: '560',
-          videoId:  videoId,
-          playerVars: {'controls': 0 },
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-          }
-        });
-        $(".urlInput").hide();
-        $(".startVideoUrlBtn").hide();
-      })
-    }
-  })
+  
 }
 
 // autoplay video
 function onPlayerReady(event) {
-  alert("hit")
   event.target.playVideo();
+  setInterval(function(){
+    currentTime = player.getCurrentTime()
+    timer.set({
+      seconds: currentTime
+    })
+  }, 1000)
 }
 
-//increments timer by one second
-function timerIncrement(){
-  count++;
-  timer.set({
-    seconds: count
+function onPlayerReadyWithSeek(event) {
+  event.target.playVideo();
+  timer.once("value", function(snapshot){
+    currentTime = snapshot.val().seconds;
+    console.log(currentTime);
+    player.seekTo(currentTime);
   })
 }
- 
+
 // when video ends
 function onPlayerStateChange(event) {
   /* 
@@ -75,17 +49,17 @@ function onPlayerStateChange(event) {
     3 (buffering)
     5 (video cued)
   */
+
   //when video ends
-  if (event.data === 1){
-    //runs timer increment function once every second
-    var counter = setInterval(timerIncrement, 1000)
-  }else if(event.data === 0) {
+  if(event.data === 0) {
     $("iframe").attr("src", "");
     $("iframe").remove();
+    //creates new div for youtube API to replace with iframe
+    newPlayerDiv = $("<div id='player'></div>");
+    $(".videoDiv").prepend(newPlayerDiv);
     $(".urlInput").show();
     $(".urlInput").val("");
     $(".startVideoUrlBtn").show();
-    clearInterval(counter);
     timer.set({
       seconds: 0
     })
@@ -116,10 +90,31 @@ $(document).ready(function() {
   var database = new Firebase("https://dazzling-fire-1875.firebaseio.com/")
   var queuedVideos =  new Firebase("https://dazzling-fire-1875.firebaseio.com/queuedVideos");
   var currentVideo = new Firebase("https://dazzling-fire-1875.firebaseio.com/currentVideo")
-
+  //hide alerts
   $(".videoAddedAlert").hide();
   $(".noTextAlertStart").hide();
   $(".noTextAlertAdded").hide();
+
+  //add start video to DB
+  $(".startVideoUrlBtn").on("click", function(){
+    url = $(".urlInput").val();
+    videoId = youtube_parser($(".urlInput").val());
+    if (videoId === false){
+      $(".noTextAlertStart").slideDown().delay(1500).slideUp();
+    }else{
+      var currentVideoRef = database.child("currentVideo");
+      currentVideoRef.set({
+        vidId: videoId,
+        url: url,
+      })
+      var timerRef = database.child("timer");
+        timerRef.set({
+        seconds: 0
+      })
+    $(".urlInput").hide();
+    $(".startVideoUrlBtn").hide();
+    }
+  })
 
  //pulls current video, if there is one, from DB and plays it
   currentVideo.limitToLast(1).on("child_added", function(snapshot) {
@@ -130,14 +125,10 @@ $(document).ready(function() {
       videoId:  videoId,
       playerVars: {'controls': 0 },
       events: {
-        'onReady': onPlayerReady,
+        'onReady': onPlayerReadyWithSeek,
         'onStateChange': onPlayerStateChange
       }
     });
-    //************
-    //seek to correct time
-    //************
-
     $(".urlInput").hide();
     $(".startVideoUrlBtn").hide();
   })
