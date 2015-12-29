@@ -60,10 +60,6 @@ function onPlayerStateChange(event) {
     $(".urlInput").show();
     $(".urlInput").val("");
     $(".startVideoUrlBtn").show();
-    timer.set({
-      seconds: 0
-    })
-    currentVideo.remove();
   }
   //if a video has been added to queued video list this will run otherwise it will not
   queuedVideos.limitToFirst(1).on("child_added", function(snapshot) { 
@@ -103,35 +99,46 @@ $(document).ready(function() {
       $(".noTextAlertStart").slideDown().delay(1500).slideUp();
     }else{
       var currentVideoRef = database.child("currentVideo");
-      currentVideoRef.set({
+      currentVideoRef.update({
         vidId: videoId,
         url: url,
       })
-      var timerRef = database.child("timer");
-        timerRef.set({
-        seconds: 0
-      })
-    $(".urlInput").hide();
-    $(".startVideoUrlBtn").hide();
-    }
-  })
-
- //pulls current video, if there is one, from DB and plays it
-  currentVideo.limitToLast(1).on("child_added", function(snapshot) {
-    videoId = snapshot.val();
-    player = new YT.Player('player', {
+      player = new YT.Player('player', {
       height: '315',
       width: '560',
       videoId:  videoId,
       playerVars: {'controls': 0 },
       events: {
-        'onReady': onPlayerReadyWithSeek,
+        'onReady': onPlayerReady,
         'onStateChange': onPlayerStateChange
       }
     });
     $(".urlInput").hide();
     $(".startVideoUrlBtn").hide();
+    }
   })
+
+
+  currentVideo.limitToLast(1).once("child_added", function(snapshot) {
+    videoId = snapshot.val();
+    console.log(videoId);
+    if(videoId === "donotdelete"){
+      return;
+    }else{
+      player = new YT.Player('player', {
+        height: '315',
+        width: '560',
+        videoId:  videoId,
+        playerVars: {'controls': 0 },
+        events: {
+          'onReady': onPlayerReadyWithSeek,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+      $(".urlInput").hide();
+      $(".startVideoUrlBtn").hide();
+    }
+   })
 
   //removes current video and loads new one everytime current video is changed on DB
   currentVideo.limitToLast(1).on("child_changed", function(snapshot) {
