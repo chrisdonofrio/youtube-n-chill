@@ -145,6 +145,9 @@ $(document).ready(function() {
     console.log(videoId)
     //exits function if there not a another video
     if (videoId === "donotdelete"){
+      $(".urlInput").show();
+      $(".urlInput").val("");
+      $(".startVideoUrlBtn").show();
       return;
     }else{
       player = new YT.Player('player', {
