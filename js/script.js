@@ -97,6 +97,14 @@ $(document).ready(function() {
   $(".noTextAlertStart").hide();
   $(".noTextAlertAdded").hide();
 
+  //search
+  $(".searchBtn").on("click", function(){
+    searchQuery = $(".searchInput").val();
+    window.open("https://www.youtube.com/results?search_query="+searchQuery, 
+      "_blank", 
+      "toolbar=no, scrollbars=yes, resizable=yes, top=100, left=100, width=500, height=500")
+  })
+
   //add start video to DB
   $(".startVideoUrlBtn").on("click", function(){
     url = $(".urlInput").val();
