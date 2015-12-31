@@ -21,7 +21,7 @@ function onYouTubePlayerAPIReady() {
 function onPlayerReady(event) {
   event.target.playVideo();
   setInterval(function(){
-    currentTime = player.getCurrentTime()
+    currentTime = player.getCurrentTime();
     timer.set({
       seconds: currentTime
     })
@@ -106,16 +106,6 @@ $(document).ready(function() {
         vidId: videoId,
         url: url,
       })
-      player = new YT.Player('player', {
-      height: '315',
-      width: '560',
-      videoId:  videoId,
-      playerVars: {'controls': 0 },
-      events: {
-        'onReady': onPlayerReady,
-        'onStateChange': onPlayerStateChange
-      }
-    });
     $(".urlInput").hide();
     $(".startVideoUrlBtn").hide();
     }
@@ -152,16 +142,22 @@ $(document).ready(function() {
     $(".videoDiv").prepend(newPlayerDiv);
     //creates new iframe of new current video
     videoId = snapshot.val();
-    player = new YT.Player('player', {
-      height: '315',
-      width: '560',
-      videoId:  videoId,
-      playerVars: {'controls': 0 },
-      events: {
-        'onReady': onPlayerReady,
-        'onStateChange': onPlayerStateChange
-      }
-    });
+    console.log(videoId)
+    //exits function if there not a another video
+    if (videoId === "donotdelete"){
+      return;
+    }else{
+      player = new YT.Player('player', {
+        height: '315',
+        width: '560',
+        videoId:  videoId,
+        playerVars: {'controls': 0 },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
   })
 
   //takes YouTube URL as arguemnt and returns video ID
