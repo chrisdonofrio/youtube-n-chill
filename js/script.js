@@ -20,6 +20,11 @@ function onYouTubePlayerAPIReady() {
 // autoplay video
 function onPlayerReady(event) {
   event.target.playVideo();
+
+/*******
+Rest timer to zero
+******/
+
   setInterval(function(){
     currentTime = player.getCurrentTime();
     timer.set({
@@ -49,9 +54,9 @@ function onPlayerStateChange(event) {
     3 (buffering)
     5 (video cued)
   */
-
-  //when video ends
-  if(event.data === 0) {
+  if(event.data === 2){
+    event.target.playVideo();
+  }else if(event.data === 0) {
     $("iframe").attr("src", "");
     $("iframe").remove();
     //creates new div for youtube API to replace with iframe
@@ -118,14 +123,14 @@ $(document).ready(function() {
     if(videoId === "donotdelete"){
       return;
     }else{
-      player = new YT.Player('player', {
-        height: '315',
-        width: '560',
+      player = new YT.Player("player", {
+        height: "315",
+        width: "560",
         videoId:  videoId,
-        playerVars: {'controls': 0 },
+        playerVars: {"controls": 0, "disablekb": 1},
         events: {
-          'onReady': onPlayerReadyWithSeek,
-          'onStateChange': onPlayerStateChange
+          "onReady": onPlayerReadyWithSeek,
+          "onStateChange": onPlayerStateChange
         }
       });
       $(".urlInput").hide();
