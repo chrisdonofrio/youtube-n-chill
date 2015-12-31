@@ -103,6 +103,7 @@ $(document).ready(function() {
     window.open("https://www.youtube.com/results?search_query="+searchQuery, 
       "_blank", 
       "toolbar=no, scrollbars=yes, resizable=yes, top=100, left=100, width=500, height=500")
+    $(".searchInput").val("");
   })
 
   //add start video to DB
