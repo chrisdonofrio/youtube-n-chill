@@ -2,7 +2,15 @@
 <html>
 <head>
   <title>YouTube N Chill</title>
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <!-- jQuery -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+  <!-- Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+  <!-- Firechat -->
+  <script src='https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.js'></script>
+  <link rel='stylesheet' href='https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.css'/>
+  <!--Bootstrap-->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
   <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
@@ -38,14 +46,34 @@
          Please Enter a valid YouTube URL
         </div>
       </div>
+      <!--Firebase Chat --> 
       <div class="col-md-3">
         <div class="panel panel-default">
           <div class="panel-body">
-            Chat
-          </div>
-        </div>
+          <!--User login -->
+            <div class="login">
+              <h4>Login to Chat</h4>
+              <form>
+                <p><input type="text" name="login" value="" placeholder="Username" id="username"></p>
+                <p><input type="password" name="password" value="" placeholder="Password" id="loginPassword"></p>
+                <p class="submit"><input type="submit" name="commit" value="Login" onclick='loginUser(); return false;'></p>
+              </form>
+            </div>
+          <!--New user registration -->
+            <div class="register">
+              <h4>Register on Chat</h4>
+              <form>
+                <p><input type="text" name="login" value="" placeholder="Username" id="registerUsername"></p>
+                <p><input type="password" name="password" value="" placeholder="Password" 
+                id="registerPassword"></p>
+                <p class="submit"><input type="submit" name="commit" value="Register" onclick='registerUser(); return false;'></p>
+              </form>
+            </div>
+            <!--firechat initializing -->
+            <div id='firechat-wrapper'></div>
+          </div> 
+        </div>  
       </div>
-    </div>
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <div class="panel panel-default">
@@ -60,5 +88,6 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
+  <script type="text/javascript" src="firebaseChat.js"></script>
 </body>
 </html>
