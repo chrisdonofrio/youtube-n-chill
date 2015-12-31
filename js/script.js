@@ -20,11 +20,9 @@ function onYouTubePlayerAPIReady() {
 // autoplay video
 function onPlayerReady(event) {
   event.target.playVideo();
-
-/*******
-Rest timer to zero
-******/
-
+  timer.set({
+      seconds: 0
+    })
   setInterval(function(){
     currentTime = player.getCurrentTime();
     timer.set({
@@ -155,14 +153,14 @@ $(document).ready(function() {
       $(".startVideoUrlBtn").show();
       return;
     }else{
-      player = new YT.Player('player', {
-        height: '315',
-        width: '560',
+      player = new YT.Player("player", {
+        height: "315",
+        width: "560",
         videoId:  videoId,
-        playerVars: {'controls': 0 },
+        playerVars: {"controls": 0 },
         events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
+          "onReady": onPlayerReady,
+          "onStateChange": onPlayerStateChange
         }
       });
     }
