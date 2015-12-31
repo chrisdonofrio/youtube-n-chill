@@ -60,6 +60,9 @@ function onPlayerStateChange(event) {
     $(".urlInput").show();
     $(".urlInput").val("");
     $(".startVideoUrlBtn").show();
+    currentVideo.update({
+      vidId: "donotdelete"
+    })
   }
   //if a video has been added to queued video list this will run otherwise it will not
   queuedVideos.limitToFirst(1).on("child_added", function(snapshot) { 
@@ -118,7 +121,7 @@ $(document).ready(function() {
     }
   })
 
-
+  //pulls current video if there one from DB and plays it
   currentVideo.limitToLast(1).once("child_added", function(snapshot) {
     videoId = snapshot.val();
     console.log(videoId);
