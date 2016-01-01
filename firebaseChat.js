@@ -2,13 +2,14 @@
     var ref = new Firebase('https://scorching-inferno-8276.firebaseio.com/');
 
     //Start: Two buttons. New user triggering the registration & login triggering email/password field
+    $("#regWarning, #loginWarning").hide();
     $(".login, .register").hide();
     $("#logUser").click(function (){
-      $(".login").fadeIn(1500);
+      $(".login").fadeIn(500);
     })
 
     $("#registerUser").click(function(){
-      $(".register").fadeIn(1500);
+      $(".register").fadeIn(500);
     })
 
     // Initialize the chat 
@@ -26,7 +27,7 @@
       }, function(error, userData) {
         if (error) {
           console.log("Error creating user:", error);
-          //please use a valid name (no strange characters)
+          $("#regWarning").fadeIn(1200).fadeOut(800);
         } else {
           console.log("Successfully created user account with uid:", userData.uid);
           //hide registration panel and show login panel
@@ -45,6 +46,7 @@
       }, function(error, authData) {
         if (error) {
           console.log("Login Failed!", error);
+          $("#loginWarning").fadeIn(1200).fadeOut(800);
         } else {
           console.log("Authenticated successfully with payload:", authData);
           initChat(authData);
