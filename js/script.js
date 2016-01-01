@@ -40,9 +40,11 @@ function onPlayerReadyWithSeek(event) {
   })
 }
 
+
+
 // when video ends
 function onPlayerStateChange(event) {
-  /* 
+/* 
   ******YouTube API reference******
     for event.data:
     -1 (unstarted)
@@ -88,6 +90,8 @@ function onPlayerStateChange(event) {
   })
 }
 
+
+
 $(document).ready(function() {
   var database = new Firebase("https://dazzling-fire-1875.firebaseio.com/")
   var queuedVideos =  new Firebase("https://dazzling-fire-1875.firebaseio.com/queuedVideos");
@@ -96,6 +100,7 @@ $(document).ready(function() {
   $(".videoAddedAlert").hide();
   $(".noTextAlertStart").hide();
   $(".noTextAlertAdded").hide();
+  $(".embedErrorAlert").hide();
 
   //search
   $(".searchBtn").on("click", function(){
@@ -123,6 +128,11 @@ $(document).ready(function() {
     }
   })
 
+  //shows an alert and move to next video if there is an error embeding a video
+  function onErrorFunction(){
+    $(".embedErrorAlert").slideDown().delay(1500).slideUp();
+  }
+
   //pulls current video if there one from DB and plays it
   currentVideo.limitToLast(1).once("child_added", function(snapshot) {
     videoId = snapshot.val();
@@ -136,6 +146,7 @@ $(document).ready(function() {
         videoId:  videoId,
         playerVars: {"controls": 0, "disablekb": 1},
         events: {
+          "onError": onErrorFunction,
           "onReady": onPlayerReadyWithSeek,
           "onStateChange": onPlayerStateChange
         }
@@ -168,6 +179,7 @@ $(document).ready(function() {
         videoId:  videoId,
         playerVars: {"controls": 0 },
         events: {
+          "onError": onErrorFunction,
           "onReady": onPlayerReady,
           "onStateChange": onPlayerStateChange
         }

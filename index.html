@@ -25,8 +25,9 @@
     <div class="row">
       <div class="col-md-3">
         <div class="panel panel-default">
-          <div class="panel-body">
-            <input type="text" class="searchInput" placeholder="Search..." /><button class="btn btn-primary searchBtn">Search</button>
+          <div class="panel-body searchPanel">
+            <form><input type="text" class="searchInput" placeholder="Search..." /><button class="btn btn-primary searchBtn">Search</button></form>
+            <button class="btn btn-info hidePanelBtn"><</button>
           </div>
         </div>
       </div>
@@ -34,6 +35,9 @@
         <!--div that YouTube's API will replce with an iFrame-->
         <div id="player"></div>
         <!-- end div-->
+        <div class="alert alert-danger embedErrorAlert" role="alert">
+         Sorry, the owner of this video does not allow embedding on other sites.
+        </div>
         <input type="text" class="urlInput" placeholder="Enter Video URL Here..." /><button class="btn startVideoUrlBtn btn-primary">Choose Starting Video</button>
         <div class="alert alert-danger noTextAlertStart" role="alert">
           Please Enter a valid YouTube URL
