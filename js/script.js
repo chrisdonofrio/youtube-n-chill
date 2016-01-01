@@ -98,9 +98,35 @@ $(document).ready(function() {
   $(".noTextAlertAdded").hide();
   $(".embedErrorAlert").hide();
 
+  //on click function to hide embed error alert
+    $(".confirmVideoSkippedBtn").on("click", function(){
+      $(".embedErrorAlert").slideUp();
+    })
+
   //shows an alert and move to next video if there is an error embeding a video
   function onErrorFunction(){
-    $(".embedErrorAlert").slideDown().delay(1500).slideUp();
+    $(".embedErrorAlert").slideDown();
+    $(".urlInput").show();
+    $(".startVideoUrlBtn").show();
+    $("iframe").attr("src", "");
+    $("iframe").remove();
+    currentVideo.update({
+      vidId: "donotdelete"
+    })
+    //changed current video to next in queue if there is one
+    queuedVideos.limitToFirst(1).once("child_added", function(snapshot) { 
+      $(".urlInput").hide();
+      $(".startVideoUrlBtn").hide();
+      nextVideo = snapshot.val();
+      currentVideo.set({
+        url: nextVideo.url,
+        vidId: nextVideo.vidId,
+      });
+      var nextVideoInfoKey = snapshot.key();
+      var queuedRef = database.child("queuedVideos");
+      var nextVideoRef = queuedRef.child(nextVideoInfoKey);
+      nextVideoRef.remove();
+    })
   }
 
   //search
