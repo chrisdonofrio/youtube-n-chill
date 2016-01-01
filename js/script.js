@@ -97,15 +97,20 @@ $(document).ready(function() {
   $(".noTextAlertStart").hide();
   $(".noTextAlertAdded").hide();
   $(".embedErrorAlert").hide();
+  $(".videoNotFoundAlert").hide();
 
   //on click function to hide embed error alert
     $(".confirmVideoSkippedBtn").on("click", function(){
-      $(".embedErrorAlert").slideUp();
+      $(".alert").slideUp();
     })
 
   //shows an alert and move to next video if there is an error embeding a video
-  function onErrorFunction(){
-    $(".embedErrorAlert").slideDown();
+  function onErrorFunction(event){
+    if (event.data === 100)
+      $("#videoNotFound").slideDown();
+    else{
+      $("#embedNotAllowed").slideDown();
+    }
     $(".urlInput").show();
     $(".startVideoUrlBtn").show();
     $("iframe").attr("src", "");
