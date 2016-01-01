@@ -96,6 +96,12 @@ $(document).ready(function() {
   $(".videoAddedAlert").hide();
   $(".noTextAlertStart").hide();
   $(".noTextAlertAdded").hide();
+  $(".embedErrorAlert").hide();
+
+  //shows an alert and move to next video if there is an error embeding a video
+  function onErrorFunction(){
+    $(".embedErrorAlert").slideDown().delay(1500).slideUp();
+  }
 
   //search
   $(".searchBtn").on("click", function(){
@@ -136,6 +142,7 @@ $(document).ready(function() {
         videoId:  videoId,
         playerVars: {"controls": 0, "disablekb": 1},
         events: {
+          "onError": onErrorFunction,
           "onReady": onPlayerReadyWithSeek,
           "onStateChange": onPlayerStateChange
         }
@@ -168,6 +175,7 @@ $(document).ready(function() {
         videoId:  videoId,
         playerVars: {"controls": 0 },
         events: {
+          "onError": onErrorFunction,
           "onReady": onPlayerReady,
           "onStateChange": onPlayerStateChange
         }
