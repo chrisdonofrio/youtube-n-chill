@@ -23,10 +23,11 @@
       </div>
     </nav>
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-3 searchColumn">
         <div class="panel panel-default">
-          <div class="panel-body">
+          <div class="panel-body searchPanel">
             <input type="text" class="searchInput" placeholder="Search..." /><button class="btn btn-primary searchBtn">Search</button>
+            <button class="btn btn-info hidePanelBtn"><</button>
             <div class="alert alert-danger noSearchTerm" role="alert">
               Enter a search term!
             </div>
@@ -75,8 +76,6 @@
               </form>
             </div>
             <div id="loginWarning"><p>Username invalid. Name should contain only letter and numbers.</p></div>
-          
-
             <!--New user registration -->
             <div class="register">
               <h4>Register:</h4>
@@ -89,7 +88,6 @@
             </div>
             <div id="regWarning"><p>Username invalid. Name should contain only letter and numbers.</p></div>
           </div>
-
             <!--firechat initializing -->
             <div id='firechat-wrapper'></div>
           </div> 
