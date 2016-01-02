@@ -33,7 +33,7 @@
         } else {
           console.log("Authenticated successfully with payload:", authData);
           $("#loginModalLabel").html("Login successful! Your ready to chat");
-          $("#loginForm").fadeOut(1200);
+          $("#loginForm").hide();
           initChat(authData);
         }
       });

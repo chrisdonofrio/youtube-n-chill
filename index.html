@@ -24,15 +24,27 @@
       </div>
     </nav>
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-3 searchColumn">
         <div class="panel panel-default">
-          <div class="panel-body">
+          <div class="panel-body searchPanel">
             <input type="text" class="searchInput" placeholder="Search..." /><button class="btn btn-primary searchBtn">Search</button>
+            <button class="btn btn-info hidePanelBtn"><</button>
+            <div class="alert alert-danger noSearchTerm" role="alert">
+              Enter a search term!
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-6 videoDiv">
+      <div class="col-md-6 videoDiv text-center">
+        <!--div that YouTube's API will replce with an iFrame-->
         <div id="player"></div>
+        <!-- end div-->
+        <div class="alert alert-danger embedErrorAlert" id="embedNotAllowed" role="alert">
+         Sorry, the owner of the next video in the queue does not allow embedding on other sites, video skipped. <button class="btn btn-primary btn-xs confirmVideoSkippedBtn">OK</button>
+        </div>
+        <div class="alert alert-danger embedErrorAlert" id="videoNotFound" role="alert">
+         Sorry, the next video in the queue was either private or was deleted from YouTube by the creator, video skipped.<button class="btn btn-primary btn-xs confirmVideoSkippedBtn">OK</button>
+        </div>
         <input type="text" class="urlInput" placeholder="Enter Video URL Here..." /><button class="btn startVideoUrlBtn btn-primary">Choose Starting Video</button>
         <div class="alert alert-danger noTextAlertStart" role="alert">
           Please Enter a valid YouTube URL
@@ -45,6 +57,7 @@
          Please Enter a valid YouTube URL
         </div>
       </div>
+
 
       <!--Chat--> 
       <div class="col-md-3">
