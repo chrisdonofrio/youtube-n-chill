@@ -106,8 +106,9 @@ $(document).ready(function() {
     }else{
       window.open("https://www.youtube.com/results?search_query="+searchQuery, 
         "_blank", 
-        "toolbar=no, scrollbars=yes, resizable=yes, top=100, left=100, width=500, height=500")
+        "toolbar=no, scrollbars=yes, resizable=yes, top=250, left=200, width=500, height=500")
       $(".searchInput").val("");
+      return false;
     }
   })
 
