@@ -134,6 +134,7 @@ $(document).ready(function() {
     })
   })
 
+  //show searh panel on click
   $(document).on("click", ".showPanelBtn", function(){
     $(".showPanelBtn").toggleClass("hidePanelBtn showPanelBtn");
     $(".hidePanelBtn").html("<");
