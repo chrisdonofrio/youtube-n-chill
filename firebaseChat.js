@@ -4,7 +4,7 @@
     //hide forms until button click
     $("#regWarning, #loginWarning, .login, .register").hide();
     //on click show the right form
-    $("#signupButton").click(function (){
+    $("#signinButton").click(function (){
       $(".login").fadeIn(500);
       $(".register").hide();
     })
@@ -45,7 +45,7 @@
         } else {
           console.log("Authenticated successfully with payload:", authData);
           initChat(authData);
-          $(".login, #logUser, .register, #registerButton, #signupButton").hide();
+          $(".login, #logUser, .register, #registerButton, #signinButton").hide();
         }
       });
     })
