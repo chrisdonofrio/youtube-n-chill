@@ -49,13 +49,13 @@
       <!--Chat--> 
       <div class="col-md-3">
         <div class="startButtons">  <!--Signup / Login buttons. Move these Navbar-->
-        <button type="button" id="registerButton" class="btn btn-default" data-toggle="modal" data-target="#registrationInfo">Sign Up</button>
-        <button type="button" id="signinButton" class="btn btn-default" data-toggle="modal" data-target="#loginInfo">Login</button>
+        <button type="button" id="registerButton" class="btn btn-default" data-toggle="modal" data-target="#registration">Sign Up</button>
+        <button type="button" id="signinButton" class="btn btn-default" data-toggle="modal" data-target="#login">Login</button>
         </div>  
         
         <div id='firechat-wrapper'></div> <!--firechat initializing -->
 
-        <div class="modal fade" id="loginInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"> <!--login modal -->
+        <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"> <!--login modal -->
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -63,11 +63,11 @@
                 <h4 class="modal-title" id="myModalLabel">Login</h4>
               </div>
               <div class="modal-body">
-                <div class="login"> <!--User login -->
+                <div class="loginForm"> <!--User login -->
                   <form>
                     <p><input type="text" name="login" placeholder="User Email" id="loginEmail"></p>
                     <p><input type="password" name="password" placeholder="Password" id="loginPassword">  </p>
-                    <p class="submit"><input type="submit" name="commit" value="Login" data-dismiss="modal" id="loginAction">  </p>
+                    <p class="submit"><input type="submit" name="commit" value="Login" id="loginAction">  </p>
                   </form>
                   <div id="loginWarning"><p>Username invalid. Name should contain only letter and numbers.</p></div>
                   <div class="modal-footer"><!--footer info -->
@@ -78,7 +78,7 @@
           </div>
         </div>  
 
-        <div class="modal fade" id="registrationInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"><!-- registration modal -->
+        <div class="modal fade" id="registration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"><!-- registration modal -->
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -86,11 +86,11 @@
                 <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
               </div>
               <div class="modal-body">
-                <div class="register"> <!--New user registration form-->
+                <div class="registerForm"> <!--New user registration form-->
                   <form>
                     <p><input type="text" name="login" placeholder="User Email" id="registerUsername"></p>
                     <p><input type="password" name="password" placeholder="Password" id="registerPassword"></p>
-                    <p class="submit"><input type="submit" value="Register" data-dismiss="modal" id="registerAction"></p>
+                    <p class="submit"><input type="submit" value="Register" id="registerAction"></p>
                   </form>
                 </div>
                 <div id="regWarning"><p>Username invalid. Name should contain only letter and numbers.</p></div>
