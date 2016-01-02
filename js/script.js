@@ -118,7 +118,6 @@ $(document).ready(function() {
   })
 
   //hide searh panel on click
-  //documtnet.
   $(document).on("click", ".hidePanelBtn", function(){
     $(".hidePanelBtn").toggleClass("hidePanelBtn showPanelBtn");
     $(".showPanelBtn").html(">");
