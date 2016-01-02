@@ -13,6 +13,7 @@
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
   <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
+
 <body>
   <div class="container">
     <nav class="navbar navbar-default">
@@ -56,56 +57,65 @@
          Please Enter a valid YouTube URL
         </div>
       </div>
-      <!--Firebase Chat --> 
+
+
+      <!--Chat--> 
       <div class="col-md-3">
-      <!--Signup / Login buttons. Move to Navbar-->
-        <div class="startButtons">
-          <button type="button" id="signupButton" class="btn btn-default">Login</button>
-          <button type="button" id="registerButton" class="btn btn-default">Sign Up</button>
+        <div class="startButtons">  <!--Signup / Login buttons. Move these Navbar-->
+          <button type="button" id="registerButton" class="btn btn-default" data-toggle="modal" data-target="#registration">Sign Up</button>
+          <button type="button" id="signinButton" class="btn btn-default" data-toggle="modal" data-target="#login">Login</button>
         </div>  
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="enterChat">
-            <!--User login -->
-            <div class="login">
-              <h4>Login:</h4>
-              <form>
-                <p><input type="text" name="login" placeholder="User Email" id="loginEmail"></p>
-                <p><input type="password" name="password" placeholder="Password" id="loginPassword"></p>
-                <p class="submit"><input type="submit" name="commit" value="Login" id="loginAction"></p>
-              </form>
-            </div>
-            <div id="loginWarning"><p>Username invalid. Name should contain only letter and numbers.</p></div>
-            <!--New user registration -->
-            <div class="register">
-              <h4>Register:</h4>
-              <form>
-                <p><input type="text" name="login" placeholder="User Email" id="registerUsername"></p>
-                <p><input type="password" name="password" placeholder="Password" 
-                id="registerPassword"></p>
-                <p class="submit"><input type="submit" value="Register" id="registerAction"></p>
-              </form>
-            </div>
-            <div id="regWarning"><p>Username invalid. Name should contain only letter and numbers.</p></div>
+        
+        <div id='firechat-wrapper'></div> <!--firechat initializing -->
+
+        <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"> <!--login modal -->
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="loginModalLabel">Login</h4>
+              </div>
+              <div class="modal-body">
+                <div id="loginForm"> <!--User login -->
+                  <form>
+                    <p><input type="text" name="login" placeholder="User Email" id="loginEmail"></p>
+                    <p><input type="password" name="password" placeholder="Password" id="loginPassword"></p>
+                    <p class="submit"><input type="submit" name="commit" value="Login" id="loginAction"></p>
+                  </form>
+                </div>
+              </div>
+            </div> 
           </div>
-            <!--firechat initializing -->
-            <div id='firechat-wrapper'></div>
+        </div>  
+
+        <div class="modal fade" id="registration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"><!-- registration modal -->
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="registrationModalLabel">New User? Sign Up to Chat!</h4>
+              </div>
+              <div class="modal-body">
+                <div id="registrationForm"> <!--New user registration form-->
+                  <form>
+                    <p><input type="text" name="login" placeholder="User Email" id="registerUsername"></p>
+                    <p><input type="password" name="password" placeholder="Password" id="registerPassword"></p>
+                    <p class="submit"><input type="submit" value="Register" id="registerAction"></p>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div> 
-        </div>  
-      </div>
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            Giphy
-          </div>
         </div>
-      </div>    
-    </div>
-  </div>
-  <script src="https://www.youtube.com/player_api"></script>
+      </div>
+    </div> 
+  </div>  
+
+  <script src="http://www.youtube.com/player_api"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
   <script type="text/javascript" src="firebaseChat.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 </body>
 </html>
