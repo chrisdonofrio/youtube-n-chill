@@ -1,18 +1,6 @@
  // Create a new Firebase reference, and a new instance of the Login client
     var ref = new Firebase('https://scorching-inferno-8276.firebaseio.com/');
 
-    //hide forms until button click
-    $("#regWarning, #loginWarning, .login, .register").hide();
-    //on click show the right form
-    $("#signupButton").click(function (){
-      $(".login").fadeIn(500);
-      $(".register").hide();
-    })
-    $("#registerButton").click(function(){
-      $(".register").fadeIn(500);
-      $(".login").hide();
-    })
-
     // New users: Creating a user account 
     $("#registerAction").click(function(e) {
       event.preventDefault();
@@ -22,17 +10,17 @@
       }, function(error, userData) {
         if (error) {
           console.log("Error creating user:", error);
-          $("#regWarning").fadeIn(500).fadeOut(2400);
+          //Need to: improve error message
         } else {
           console.log("Successfully created user account with uid:", userData.uid);
-          //hide registration panel and show login panel
-          $(".register").hide();
-          $(".login").show();
+          $("#registrationModalLabel").html("Registration Successful! Login and start chatting!")
+          $("#registrationForm").hide();
+          //Need to: change inner text of modal with info on registration status
         }
       });
     })
 
-    // Access input from form and respond to click by initializing chat
+    // User Login: triggering the chat to initialize
     $("#loginAction").click(function(e) {
       event.preventDefault();
       ref.authWithPassword({
@@ -41,11 +29,12 @@
       }, function(error, authData) {
         if (error) {
           console.log("Login Failed!", error);
-          $("#loginWarning").fadeIn(500).fadeOut(2400);
+          //need to: improve error message
         } else {
           console.log("Authenticated successfully with payload:", authData);
+          $("#loginModalLabel").html("Login successful! Your ready to chat");
+          $("#loginForm").hide();
           initChat(authData);
-          $(".login, #logUser, .register, #registerButton, #signupButton").hide();
         }
       });
     })

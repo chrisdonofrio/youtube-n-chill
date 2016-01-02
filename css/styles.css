@@ -1,47 +1,134 @@
-.nav-title{
+body {
+  background-color: black;
+}
+
+button {
+  font-family: 'Catamaran', sans-serif;
+  text-transform: lowercase;
+}
+
+.navbar {
+  background-color: rgba(50, 50, 50, 0.3);
+  border: 0;
+}
+
+.nav-title {
   margin-top: 10px;
+  font-family: 'Catamaran', sans-serif;
+  text-transform: lowercase;
+  letter-spacing: 2px;
+  color: #556B2F;
 }
 
-.searchInput{
-width: 150px;
+#signinButton,
+#registerButton {
+  margin-top: 5px;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  border-radius: 10%;
 }
 
-.searchPanel{
+.searchInput {
+  width: 150px !important;
+  background-color: olive !important;
+  padding: 8px 15px !important;
+  background: rgba(50, 50, 50, 0.2) !important;
+  border: 0px solid #dbdbdb !important;
+  font-family: 'Catamaran', sans-serif;
+  text-transform: lowercase;
+}
+
+.searchInput:focus {
+  background-color: #99a682 !important;
+}
+
+.panel {
+  border: 1px;
+}
+
+.searchColumn {
   height: 315px;
 }
 
-.urlInput{
-width: 350px;
+.searchPanel {
+  background-color: #0c0c0c !important;
+  border: 0;
 }
 
-.startVideoUrlBtn{
-  margin-left: 10px;
+.searchBtn {
+  padding: 6px 15px;
+  left: -8px;
+  border: 0;
+  background-color: #556B2F;
+  color: #fafafa;
 }
 
-.urlQueueInput{
-  margin-top: 10px;
-  width: 350px;
+.searchBtn:hover {
+  background-color: #2a3517;
 }
 
-.addVideoUrlBtn{
-  margin-left: 10px;
+.addVideoUrlBtn,
+.startVideoUrlBtn {
+  display: inline-block;
+  width: 50%;
+  background-color: #556B2F;
+  margin: 5px;
+  border: 0;
 }
 
-.alert{
+.addVideoUrlBtn:hover,
+.startVideoUrlBtn:hover {
+  background-color: #2a3517;
+}
+
+.urlQueueInput,
+.urlInput {
+  padding: 5px;
+  width: 250px;
+  background-color: olive !important;
+  padding: 8px 15px !important;
+  background: rgba(50, 50, 50, 0.2) !important;
+  border: 1px solid #99a682 !important;
+  text-transform: lowercase;
+  font-family: 'Catamaran', sans-serif;
+}
+
+.urlQueueInput:focus,
+.urlInput:focus {
+  background-color: #99a682 !important;
+}
+
+::-webkit-input-placeholder {
+  color: #452f6b;
+}
+
+:-moz-placeholder {
+ /* Firefox 18- */
+  color: #452f6b;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #452f6b;
+}
+
+:-ms-input-placeholder {
+  color: #452f6b;
+}
+
+.alert {
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-.searchBtn{
-  margin-left: 10px;
-}
-
-.largePlayer{
+.largePlayer {
   width: 100%;
-  height:420px;
+  height: 420px;
 }
 
-.hidePanelBtn{
+.hidePanelBtn {
   background: #3498db;
   background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
   background-image: -moz-linear-gradient(top, #3498db, #2980b9);
@@ -70,7 +157,7 @@ width: 350px;
   text-decoration: none;
 }
 
-.showPanelBtn{
+.showPanelBtn {
   background: #3498db;
   background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
   background-image: -moz-linear-gradient(top, #3498db, #2980b9);
@@ -99,6 +186,6 @@ width: 350px;
   text-decoration: none;
 }
 
-.confirmVideoSkippedBtn{
+.confirmVideoSkippedBtn {
   margin-left: 5px;
 }

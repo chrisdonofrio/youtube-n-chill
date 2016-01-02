@@ -2,6 +2,10 @@
 <html>
 <head>
   <title>YouTube N Chill</title>
+    <!-- Google Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Catamaran:100' rel='stylesheet' type='text/css'>
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- jQuery -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
   <!-- Firebase -->
@@ -13,12 +17,19 @@
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
   <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
+
 <body>
   <div class="container">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-          <h3 class="nav-title">YouTube N Chill</h3>
+          <h1 class="nav-title"><i class="fa fa-youtube fa-2x"></i> 'N' Chill.</h1>
+          </div>
+                <!--Signup / Login buttons. Move to Navbar-->
+        <ul class="startButtons nav navbar-right">
+          <li><button type="button" id="signinButton" class="btn btn-default" data-toggle="modal" data-target="#login">Login</button></li>
+          <li><button type="button" id="registerButton" class="btn btn-default" data-toggle="modal" data-target="#registration">Sign Up</button></li>
+        </ul>  
         </div>
       </div>
     </nav>
@@ -27,7 +38,7 @@
         <div class="panel panel-default">
           <div class="panel-body searchPanel">
             <input type="text" class="searchInput" placeholder="Search..." /><button class="btn btn-primary searchBtn">Search</button>
-            <button class="btn btn-info hidePanelBtn"><</button>
+            <button class="btn btn-info hidePanelBtn"></button>
             <div class="alert alert-danger noSearchTerm" role="alert">
               Enter a search term!
             </div>
@@ -44,7 +55,8 @@
         <div class="alert alert-danger embedErrorAlert" id="videoNotFound" role="alert">
          Sorry, the next video in the queue was either private or was deleted from YouTube by the creator, video skipped.<button class="btn btn-primary btn-xs confirmVideoSkippedBtn">OK</button>
         </div>
-        <input type="text" class="urlInput" placeholder="Enter Video URL Here..." /><button class="btn startVideoUrlBtn btn-primary">Choose Starting Video</button>
+		<div class="video-container">
+		<input type="text" class="urlInput" placeholder="Enter Video URL Here..." /><button class="btn startVideoUrlBtn btn-primary">Choose Starting Video</button>
         <div class="alert alert-danger noTextAlertStart" role="alert">
           Please Enter a valid YouTube URL
         </div>
@@ -55,57 +67,64 @@
         <div class="alert alert-danger noTextAlertAdded" role="alert">
          Please Enter a valid YouTube URL
         </div>
-      </div>
-      <!--Firebase Chat --> 
-      <div class="col-md-3">
-      <!--Signup / Login buttons. Move to Navbar-->
-        <div class="startButtons">
-          <button type="button" id="signupButton" class="btn btn-default">Login</button>
-          <button type="button" id="registerButton" class="btn btn-default">Sign Up</button>
-        </div>  
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="enterChat">
-            <!--User login -->
-            <div class="login">
-              <h4>Login:</h4>
-              <form>
-                <p><input type="text" name="login" placeholder="User Email" id="loginEmail"></p>
-                <p><input type="password" name="password" placeholder="Password" id="loginPassword"></p>
-                <p class="submit"><input type="submit" name="commit" value="Login" id="loginAction"></p>
-              </form>
-            </div>
-            <div id="loginWarning"><p>Username invalid. Name should contain only letter and numbers.</p></div>
-            <!--New user registration -->
-            <div class="register">
-              <h4>Register:</h4>
-              <form>
-                <p><input type="text" name="login" placeholder="User Email" id="registerUsername"></p>
-                <p><input type="password" name="password" placeholder="Password" 
-                id="registerPassword"></p>
-                <p class="submit"><input type="submit" value="Register" id="registerAction"></p>
-              </form>
-            </div>
-            <div id="regWarning"><p>Username invalid. Name should contain only letter and numbers.</p></div>
-          </div>
-            <!--firechat initializing -->
-            <div id='firechat-wrapper'></div>
-          </div> 
-        </div>  
-      </div>
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            Giphy
-          </div>
         </div>
-      </div>    
-    </div>
-  </div>
+      </div>
+
+
+      <!--Chat--> 
+      <div class="col-md-3">
+        
+        <div id='firechat-wrapper'></div> <!--firechat initializing -->
+
+        <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"> <!--login modal -->
+          <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="loginModalLabel">Login</h4>
+              </div>
+              <div class="modal-body">
+                <div id="loginForm"> <!--User login -->
+                  <form>
+                    <p><input type="text" name="login" placeholder="User Email" id="loginEmail"></p>
+                    <p><input type="password" name="password" placeholder="Password" id="loginPassword"></p>
+                    <p class="submit"><input type="submit" name="commit" value="Login" id="loginAction"></p>
+                  </form>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </div>  
+
+        <div class="modal fade" id="registration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"><!-- registration modal -->
+          <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="registrationModalLabel">New User? Sign Up to Chat!</h4>
+              </div>
+              <div class="modal-body">
+                <div id="registrationForm"> <!--New user registration form-->
+                  <form>
+                    <p><input type="text" name="login" placeholder="User Email" id="registerUsername"></p>
+                    <p><input type="password" name="password" placeholder="Password" id="registerPassword"></p>
+                    <p class="submit"><input type="submit" value="Register" id="registerAction"></p>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div> 
+  </div>  
+
   <script src="http://www.youtube.com/player_api"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <script type="text/javascript" src="js/script.js"></script>
   <script type="text/javascript" src="firebaseChat.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 </body>
 </html>
