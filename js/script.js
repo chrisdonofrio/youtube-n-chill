@@ -191,6 +191,7 @@ $(document).ready(function() {
         $("iframe").attr("width", "560").attr("height", "315");
       }
     })
+  })
     
 
   //add start video to DB
