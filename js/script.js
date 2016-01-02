@@ -96,7 +96,44 @@ $(document).ready(function() {
   $(".videoAddedAlert").hide();
   $(".noTextAlertStart").hide();
   $(".noTextAlertAdded").hide();
+  $(".embedErrorAlert").hide();
+  $(".videoNotFoundAlert").hide();
   $(".noSearchTerm").hide();
+
+  //on click function to hide embed error alert
+    $(".confirmVideoSkippedBtn").on("click", function(){
+      $(".alert").slideUp();
+    })
+
+  //shows an alert and move to next video if there is an error embeding a video
+  function onErrorFunction(event){
+    if (event.data === 100)
+      $("#videoNotFound").slideDown();
+    else{
+      $("#embedNotAllowed").slideDown();
+    }
+    $(".urlInput").show();
+    $(".startVideoUrlBtn").show();
+    $("iframe").attr("src", "");
+    $("iframe").remove();
+    currentVideo.update({
+      vidId: "donotdelete"
+    })
+    //changed current video to next in queue if there is one
+    queuedVideos.limitToFirst(1).once("child_added", function(snapshot) { 
+      $(".urlInput").hide();
+      $(".startVideoUrlBtn").hide();
+      nextVideo = snapshot.val();
+      currentVideo.set({
+        url: nextVideo.url,
+        vidId: nextVideo.vidId,
+      });
+      var nextVideoInfoKey = snapshot.key();
+      var queuedRef = database.child("queuedVideos");
+      var nextVideoRef = queuedRef.child(nextVideoInfoKey);
+      nextVideoRef.remove();
+    })
+  }
 
   //search
   $(".searchBtn").on("click", function(){
@@ -142,6 +179,7 @@ $(document).ready(function() {
         videoId:  videoId,
         playerVars: {"controls": 0, "disablekb": 1},
         events: {
+          "onError": onErrorFunction,
           "onReady": onPlayerReadyWithSeek,
           "onStateChange": onPlayerStateChange
         }
@@ -174,6 +212,7 @@ $(document).ready(function() {
         videoId:  videoId,
         playerVars: {"controls": 0 },
         events: {
+          "onError": onErrorFunction,
           "onReady": onPlayerReady,
           "onStateChange": onPlayerStateChange
         }

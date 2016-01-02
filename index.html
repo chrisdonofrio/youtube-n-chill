@@ -37,6 +37,12 @@
         <!--div that YouTube's API will replce with an iFrame-->
         <div id="player"></div>
         <!-- end div-->
+        <div class="alert alert-danger embedErrorAlert" id="embedNotAllowed" role="alert">
+         Sorry, the owner of the next video in the queue does not allow embedding on other sites, video skipped. <button class="btn btn-primary btn-xs confirmVideoSkippedBtn">OK</button>
+        </div>
+        <div class="alert alert-danger embedErrorAlert" id="videoNotFound" role="alert">
+         Sorry, the next video in the queue was either private or was deleted from YouTube by the creator, video skipped.<button class="btn btn-primary btn-xs confirmVideoSkippedBtn">OK</button>
+        </div>
         <input type="text" class="urlInput" placeholder="Enter Video URL Here..." /><button class="btn startVideoUrlBtn btn-primary">Choose Starting Video</button>
         <div class="alert alert-danger noTextAlertStart" role="alert">
           Please Enter a valid YouTube URL
