@@ -38,6 +38,12 @@ function onPlayerReadyWithSeek(event) {
     console.log(currentTime);
     player.seekTo(currentTime);
   })
+  setInterval(function(){
+    currentTime = player.getCurrentTime();
+    timer.set({
+      seconds: currentTime
+    })
+  }, 1000)
 }
 
 
@@ -108,6 +114,41 @@ $(document).ready(function() {
       "_blank", 
       "toolbar=no, scrollbars=yes, resizable=yes, top=100, left=100, width=500, height=500")
     $(".searchInput").val("");
+    return false;
+  })
+
+  //hide searh panel on click
+  //documtnet.
+  $(document).on("click", ".hidePanelBtn", function(){
+    $(".hidePanelBtn").toggleClass("hidePanelBtn showPanelBtn");
+    $(".showPanelBtn").html(">");
+    currentVideo.once("value", function(snapshot) {
+      $(".searchColumn").toggleClass("col-md-3 col-md-1");
+      $(".searchInput").hide();
+      $(".searchBtn").hide();
+      $(".videoDiv").toggleClass("col-md-6 col-md-8");
+      videoId = snapshot.val().vidId;
+      //if there is a video playing currently
+      if(videoId != "donotdelete"){
+        $("iframe").attr("width", "750").attr("height", "422");
+      }
+    })
+  })
+
+  $(document).on("click", ".showPanelBtn", function(){
+    $(".showPanelBtn").toggleClass("hidePanelBtn showPanelBtn");
+    $(".hidePanelBtn").html("<");
+    currentVideo.once("value", function(snapshot) {
+      $(".searchColumn").toggleClass("col-md-3 col-md-1");
+      $(".searchInput").show();
+      $(".searchBtn").show();
+      $(".videoDiv").toggleClass("col-md-6 col-md-8");
+      videoId = snapshot.val().vidId;
+      //if there is a video playing currently
+      if(videoId != "donotdelete"){
+        $("iframe").attr("width", "560").attr("height", "315");
+      }
+    })
   })
 
   //add start video to DB
@@ -166,16 +207,33 @@ $(document).ready(function() {
       $(".startVideoUrlBtn").show();
       return;
     }else{
-      player = new YT.Player("player", {
-        height: "315",
-        width: "560",
-        videoId:  videoId,
-        playerVars: {"controls": 0 },
-        events: {
-          "onReady": onPlayerReady,
-          "onStateChange": onPlayerStateChange
-        }
-      });
+      if ($(".videoDiv").attr("class") === "videoDiv text-center col-md-8"){
+        player = new YT.Player("player", {
+          height: "422",
+          width: "750",
+          videoId:  videoId,
+          playerVars: {"controls": 0, "disablekb": 1},
+          events: {
+            "onReady": onPlayerReady,
+            "onStateChange": onPlayerStateChange
+          }
+        });
+        $(".urlInput").hide();
+        $(".startVideoUrlBtn").hide();
+      }else{
+        player = new YT.Player("player", {
+          height: "315",
+          width: "560",
+          videoId:  videoId,
+          playerVars: {"controls": 0, "disablekb": 1},
+          events: {
+            "onReady": onPlayerReady,
+            "onStateChange": onPlayerStateChange
+          }
+        });
+        $(".urlInput").hide();
+        $(".startVideoUrlBtn").hide();
+      }
     }
   })
 
