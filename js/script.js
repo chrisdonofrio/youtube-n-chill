@@ -38,11 +38,19 @@ function onPlayerReadyWithSeek(event) {
     console.log(currentTime);
     player.seekTo(currentTime);
   })
+  setInterval(function(){
+    currentTime = player.getCurrentTime();
+    timer.set({
+      seconds: currentTime
+    })
+  }, 1000)
 }
+
+
 
 // when video ends
 function onPlayerStateChange(event) {
-  /* 
+/* 
   ******YouTube API reference******
     for event.data:
     -1 (unstarted)
@@ -88,6 +96,8 @@ function onPlayerStateChange(event) {
   })
 }
 
+
+
 $(document).ready(function() {
   var database = new Firebase("https://dazzling-fire-1875.firebaseio.com/")
   var queuedVideos =  new Firebase("https://dazzling-fire-1875.firebaseio.com/queuedVideos");
@@ -96,7 +106,44 @@ $(document).ready(function() {
   $(".videoAddedAlert").hide();
   $(".noTextAlertStart").hide();
   $(".noTextAlertAdded").hide();
+  $(".embedErrorAlert").hide();
+  $(".videoNotFoundAlert").hide();
   $(".noSearchTerm").hide();
+
+  //on click function to hide embed error alert
+    $(".confirmVideoSkippedBtn").on("click", function(){
+      $(".alert").slideUp();
+    })
+
+  //shows an alert and move to next video if there is an error embeding a video
+  function onErrorFunction(event){
+    if (event.data === 100)
+      $("#videoNotFound").slideDown();
+    else{
+      $("#embedNotAllowed").slideDown();
+    }
+    $(".urlInput").show();
+    $(".startVideoUrlBtn").show();
+    $("iframe").attr("src", "");
+    $("iframe").remove();
+    currentVideo.update({
+      vidId: "donotdelete"
+    })
+    //changed current video to next in queue if there is one
+    queuedVideos.limitToFirst(1).once("child_added", function(snapshot) { 
+      $(".urlInput").hide();
+      $(".startVideoUrlBtn").hide();
+      nextVideo = snapshot.val();
+      currentVideo.set({
+        url: nextVideo.url,
+        vidId: nextVideo.vidId,
+      });
+      var nextVideoInfoKey = snapshot.key();
+      var queuedRef = database.child("queuedVideos");
+      var nextVideoRef = queuedRef.child(nextVideoInfoKey);
+      nextVideoRef.remove();
+    })
+  }
 
   //search
   $(".searchBtn").on("click", function(){
@@ -111,6 +158,41 @@ $(document).ready(function() {
       return false;
     }
   })
+
+  //hide searh panel on click
+  $(document).on("click", ".hidePanelBtn", function(){
+    $(".hidePanelBtn").toggleClass("hidePanelBtn showPanelBtn");
+    $(".showPanelBtn").html(">");
+    currentVideo.once("value", function(snapshot) {
+      $(".searchColumn").toggleClass("col-md-3 col-md-1");
+      $(".searchInput").hide();
+      $(".searchBtn").hide();
+      $(".videoDiv").toggleClass("col-md-6 col-md-8");
+      videoId = snapshot.val().vidId;
+      //if there is a video playing currently
+      if(videoId != "donotdelete"){
+        $("iframe").attr("width", "750").attr("height", "422");
+      }
+    })
+  })
+
+  //show searh panel on click
+  $(document).on("click", ".showPanelBtn", function(){
+    $(".showPanelBtn").toggleClass("hidePanelBtn showPanelBtn");
+    $(".hidePanelBtn").html("<");
+    currentVideo.once("value", function(snapshot) {
+      $(".searchColumn").toggleClass("col-md-3 col-md-1");
+      $(".searchInput").show();
+      $(".searchBtn").show();
+      $(".videoDiv").toggleClass("col-md-6 col-md-8");
+      videoId = snapshot.val().vidId;
+      //if there is a video playing currently
+      if(videoId != "donotdelete"){
+        $("iframe").attr("width", "560").attr("height", "315");
+      }
+    })
+  })
+    
 
   //add start video to DB
   $(".startVideoUrlBtn").on("click", function(){
@@ -142,6 +224,7 @@ $(document).ready(function() {
         videoId:  videoId,
         playerVars: {"controls": 0, "disablekb": 1},
         events: {
+          "onError": onErrorFunction,
           "onReady": onPlayerReadyWithSeek,
           "onStateChange": onPlayerStateChange
         }
@@ -168,16 +251,33 @@ $(document).ready(function() {
       $(".startVideoUrlBtn").show();
       return;
     }else{
-      player = new YT.Player("player", {
-        height: "315",
-        width: "560",
-        videoId:  videoId,
-        playerVars: {"controls": 0 },
-        events: {
-          "onReady": onPlayerReady,
-          "onStateChange": onPlayerStateChange
-        }
-      });
+      if ($(".videoDiv").attr("class") === "videoDiv text-center col-md-8"){
+        player = new YT.Player("player", {
+          height: "422",
+          width: "750",
+          videoId:  videoId,
+          playerVars: {"controls": 0, "disablekb": 1},
+          events: {
+            "onReady": onPlayerReady,
+            "onStateChange": onPlayerStateChange
+          }
+        });
+        $(".urlInput").hide();
+        $(".startVideoUrlBtn").hide();
+      }else{
+        player = new YT.Player("player", {
+          height: "315",
+          width: "560",
+          videoId:  videoId,
+          playerVars: {"controls": 0, "disablekb": 1},
+          events: {
+            "onReady": onPlayerReady,
+            "onStateChange": onPlayerStateChange
+          }
+        });
+        $(".urlInput").hide();
+        $(".startVideoUrlBtn").hide();
+      }
     }
   })
 
