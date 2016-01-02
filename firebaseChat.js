@@ -2,7 +2,7 @@
     var ref = new Firebase('https://scorching-inferno-8276.firebaseio.com/');
 
     //hide forms until button click
-    $("#regWarning, #loginWarning, .login, .register").hide();
+    $("#regWarning, #loginWarning, .login, .register, .panel").hide();
     //on click show the right form
     $("#signupButton").click(function (){
       $(".login").fadeIn(500);
