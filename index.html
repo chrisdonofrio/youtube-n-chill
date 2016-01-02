@@ -47,27 +47,29 @@
 
       <!--Firebase Chat --> 
       <div class="col-md-3">
+      <!--Signup / Login buttons. Move to Navbar-->
+        <div class="startButtons">
+          <button type="button" id="signupButton" class="btn btn-default">Login</button>
+          <button type="button" id="registerButton" class="btn btn-default">Sign Up</button>
+        </div>  
         <div class="panel panel-default">
           <div class="panel-body">
-            <button type="button" id="logUser" class="btn btn-default">Login</button>
-            <!--insert slide down for error-->
-            <button type="button" id="registerUser" class="btn btn-default">Register</button>
-            <!--insert slide down for error-->
-            <div class="enterChat"
+            <div class="enterChat">
             <!--User login -->
             <div class="login">
-              <h4>Login to Chat</h4>
+              <h4>Login:</h4>
               <form>
                 <p><input type="text" name="login" placeholder="User Email" id="loginEmail"></p>
                 <p><input type="password" name="password" placeholder="Password" id="loginPassword"></p>
                 <p class="submit"><input type="submit" name="commit" value="Login" id="loginAction"></p>
               </form>
             </div>
-            <div id="loginWarning"><p>Username not valid</p></div>
+            <div id="loginWarning"><p>Username invalid. Name should contain only letter and numbers.</p></div>
           
+
             <!--New user registration -->
             <div class="register">
-              <h4>Register on Chat</h4>
+              <h4>Register:</h4>
               <form>
                 <p><input type="text" name="login" placeholder="User Email" id="registerUsername"></p>
                 <p><input type="password" name="password" placeholder="Password" 
@@ -75,8 +77,9 @@
                 <p class="submit"><input type="submit" value="Register" id="registerAction"></p>
               </form>
             </div>
-            <div id="regWarning"><p>Username not valid</p></div>
-           
+            <div id="regWarning"><p>Username invalid. Name should contain only letter and numbers.</p></div>
+          </div>
+
             <!--firechat initializing -->
             <div id='firechat-wrapper'></div>
           </div> 
