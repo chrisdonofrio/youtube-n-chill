@@ -96,6 +96,21 @@ $(document).ready(function() {
   $(".videoAddedAlert").hide();
   $(".noTextAlertStart").hide();
   $(".noTextAlertAdded").hide();
+  $(".noSearchTerm").hide();
+
+  //search
+  $(".searchBtn").on("click", function(){
+    searchQuery = $(".searchInput").val().trim();
+    if (searchQuery === ""){
+      $(".noSearchTerm").slideDown().delay(1500).slideUp();
+    }else{
+      window.open("https://www.youtube.com/results?search_query="+searchQuery, 
+        "_blank", 
+        "toolbar=no, scrollbars=yes, resizable=yes, top=250, left=200, width=500, height=500")
+      $(".searchInput").val("");
+      return false;
+    }
+  })
 
   //add start video to DB
   $(".startVideoUrlBtn").on("click", function(){
