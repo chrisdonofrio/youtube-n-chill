@@ -98,6 +98,7 @@ $(document).ready(function() {
   $(".noTextAlertAdded").hide();
   $(".embedErrorAlert").hide();
   $(".videoNotFoundAlert").hide();
+  $(".noSearchTerm").hide();
 
   //on click function to hide embed error alert
     $(".confirmVideoSkippedBtn").on("click", function(){
@@ -136,11 +137,16 @@ $(document).ready(function() {
 
   //search
   $(".searchBtn").on("click", function(){
-    searchQuery = $(".searchInput").val();
-    window.open("https://www.youtube.com/results?search_query="+searchQuery, 
-      "_blank", 
-      "toolbar=no, scrollbars=yes, resizable=yes, top=100, left=100, width=500, height=500")
-    $(".searchInput").val("");
+    searchQuery = $(".searchInput").val().trim();
+    if (searchQuery === ""){
+      $(".noSearchTerm").slideDown().delay(1500).slideUp();
+    }else{
+      window.open("https://www.youtube.com/results?search_query="+searchQuery, 
+        "_blank", 
+        "toolbar=no, scrollbars=yes, resizable=yes, top=250, left=200, width=500, height=500")
+      $(".searchInput").val("");
+      return false;
+    }
   })
 
   //add start video to DB
