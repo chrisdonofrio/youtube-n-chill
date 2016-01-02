@@ -9,27 +9,31 @@
         password : $("#registerPassword").val(),
       }, function(error, userData) {
         if (error) {
+          $("#regErrorMessage").html(error);
           console.log("Error creating user:", error);
           //Need to: improve error message
         } else {
           console.log("Successfully created user account with uid:", userData.uid);
-          $("#registrationModalLabel").html("Registration Successful! Login and start chatting!")
+          $("#registrationModalLabel").html("Welcome! Login, watch videos, start chatting!")
           $("#registrationForm").hide();
           //Need to: change inner text of modal with info on registration status
         }
       });
     })
-
+  
     // User Login: triggering the chat to initialize
     $("#loginAction").click(function(e) {
       event.preventDefault();
+      var loginEmail = $("#loginEmail").val();
+      var loginPassword = $("#loginPassword").val();
+      //Firechat function that kicks off authentication
       ref.authWithPassword({
-        email    : $("#loginEmail").val(), 
-        password : $("#loginPassword").val()
+        email    : loginEmail, 
+        password : loginPassword
       }, function(error, authData) {
         if (error) {
+          $("#loginErrorMessage").html(error);
           console.log("Login Failed!", error);
-          //need to: improve error message
         } else {
           console.log("Authenticated successfully with payload:", authData);
           $("#loginModalLabel").html("Login successful! Your ready to chat");
