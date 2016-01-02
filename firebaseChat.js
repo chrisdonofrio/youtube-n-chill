@@ -1,9 +1,6 @@
  // Create a new Firebase reference, and a new instance of the Login client
     var ref = new Firebase('https://scorching-inferno-8276.firebaseio.com/');
 
-    //Hide forms until button click
-    $("#regWarning, #loginWarning").hide();
-  
     // New users: Creating a user account 
     $("#registerAction").click(function(e) {
       event.preventDefault();
@@ -13,9 +10,11 @@
       }, function(error, userData) {
         if (error) {
           console.log("Error creating user:", error);
-          $("#regWarning").fadeIn(500).fadeOut(2400);//Need to: improve error message
+          //Need to: improve error message
         } else {
           console.log("Successfully created user account with uid:", userData.uid);
+          $("#registrationModalLabel").html("Registration Successful! Login and start chatting!")
+          $("#registrationForm").hide();
           //Need to: change inner text of modal with info on registration status
         }
       });
@@ -30,10 +29,11 @@
       }, function(error, authData) {
         if (error) {
           console.log("Login Failed!", error);
-          $("#loginWarning").fadeIn(500).fadeOut(2400);//need to: improve error message
+          //need to: improve error message
         } else {
           console.log("Authenticated successfully with payload:", authData);
-          //Need to: change inner text of modal with info on login status
+          $("#loginModalLabel").html("Login successful! Your ready to chat");
+          $("#loginForm").fadeOut(1200);
           initChat(authData);
         }
       });
