@@ -74,7 +74,9 @@
               <div class="modal-body">
                 <div id="loginForm"> <!--User login -->
                   <form>
-                    <p><input type="text" name="login" placeholder="User Email" id="loginEmail"></p>
+                    <label for="loginEmail">Your username@oursite.io</label>
+                    <p><input type="text" name="login" placeholder="username@ourSite.io" id="loginEmail"></p>
+                    <label for="loginPassword">Password?</label>
                     <p><input type="password" name="password" placeholder="Password" id="loginPassword"></p>
                     <p class="submit"><input type="submit" name="commit" value="Login" id="loginAction"></p>
                     <span id="loginErrorMessage"></span>
@@ -94,8 +96,11 @@
               <div class="modal-body">
                 <div id="registrationForm"> <!--New user registration form-->
                   <form>
-                    <p><input type="text" name="login" placeholder="User Email" id="registerUsername"></p>
+                    <label for="registerUsername">Step 1: Create a username @oursite.io</label>
+                    <p><input type="text" name="login" placeholder="username@ourSite.io"  id="registerUsername"></p>
+                    <label for="registerPassword">Step 2: Create a password</label>
                     <p><input type="password" name="password" placeholder="Password" id="registerPassword"></p>
+                    <label for="registerAction">Step 3: Send it our way</label>
                     <p class="submit"><input type="submit" value="Register" id="registerAction"></p>
                     <span id="regErrorMessage"></span>
                   </form>

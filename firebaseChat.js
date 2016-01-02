@@ -14,7 +14,7 @@
           //Need to: improve error message
         } else {
           console.log("Successfully created user account with uid:", userData.uid);
-          $("#registrationModalLabel").html("Registration Successful. Login and start chatting!")
+          $("#registrationModalLabel").html("Welcome! Login, watch videos, start chatting!")
           $("#registrationForm").hide();
           //Need to: change inner text of modal with info on registration status
         }
