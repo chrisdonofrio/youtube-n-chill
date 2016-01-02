@@ -13,6 +13,7 @@
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
   <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
+
 <body>
   <div class="container">
     <nav class="navbar navbar-default">
@@ -45,7 +46,7 @@
         </div>
       </div>
 
-      <!--Firebase Chat --> 
+      <!--Chat--> 
       <div class="col-md-3">
         <div class="startButtons">  <!--Signup / Login buttons. Move these Navbar-->
         <button type="button" id="registerButton" class="btn btn-default" data-toggle="modal" data-target="#registrationInfo">Sign Up</button>
@@ -54,9 +55,7 @@
         
         <div id='firechat-wrapper'></div> <!--firechat initializing -->
 
-       
-        <!-- Modal -->
-        <div class="modal fade" id="loginInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="loginInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"> <!--login modal -->
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -68,11 +67,10 @@
                   <form>
                     <p><input type="text" name="login" placeholder="User Email" id="loginEmail"></p>
                     <p><input type="password" name="password" placeholder="Password" id="loginPassword">  </p>
-                    <p class="submit"><input type="submit" name="commit" value="Login" id="loginAction">  </p>
+                    <p class="submit"><input type="submit" name="commit" value="Login" data-dismiss="modal" id="loginAction">  </p>
                   </form>
                   <div id="loginWarning"><p>Username invalid. Name should contain only letter and numbers.</p></div>
-                  <div class="modal-footer">
-                  <!--footer info -->
+                  <div class="modal-footer"><!--footer info -->
                   </div>
                 </div>
               </div>
@@ -80,8 +78,7 @@
           </div>
         </div>  
 
-        <!-- Modal -->
-        <div class="modal fade" id="registrationInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="registrationInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"><!-- registration modal -->
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -89,16 +86,15 @@
                 <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
               </div>
               <div class="modal-body">
-                <div class="register"> <!--New user registration -->
+                <div class="register"> <!--New user registration form-->
                   <form>
                     <p><input type="text" name="login" placeholder="User Email" id="registerUsername"></p>
                     <p><input type="password" name="password" placeholder="Password" id="registerPassword"></p>
-                    <p class="submit"><input type="submit" value="Register" id="registerAction"></p>
+                    <p class="submit"><input type="submit" value="Register" data-dismiss="modal" id="registerAction"></p>
                   </form>
                 </div>
                 <div id="regWarning"><p>Username invalid. Name should contain only letter and numbers.</p></div>
-                <div class="modal-footer">
-                 <!--footer info -->
+                <div class="modal-footer"><!--footer info -->
                 </div>
               </div>
             </div>
@@ -107,7 +103,6 @@
       </div>
     </div> 
   </div>  
-
 
   <script src="http://www.youtube.com/player_api"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>

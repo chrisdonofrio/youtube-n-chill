@@ -25,9 +25,6 @@
           $("#regWarning").fadeIn(500).fadeOut(2400);
         } else {
           console.log("Successfully created user account with uid:", userData.uid);
-          //hide registration panel and show login panel
-          $(".register").hide();
-          $(".login").show();
         }
       });
     })
@@ -45,7 +42,6 @@
         } else {
           console.log("Authenticated successfully with payload:", authData);
           initChat(authData);
-          $(".login, #logUser, .register, #registerButton, #signinButton").hide();
         }
       });
     })
