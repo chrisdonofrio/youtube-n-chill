@@ -9,7 +9,7 @@
         password : $("#registerPassword").val(),
       }, function(error, userData) {
         if (error) {
-          $("#regErrorMessage").html(error).fadeOut(4000);
+          $("#regErrorMessage").html(error);
           console.log("Error creating user:", error);
           //Need to: improve error message
         } else {
@@ -32,7 +32,7 @@
         password : loginPassword
       }, function(error, authData) {
         if (error) {
-          $("#loginErrorMessage").html(error).fadeOut(4000);
+          $("#loginErrorMessage").html(error);
           console.log("Login Failed!", error);
         } else {
           console.log("Authenticated successfully with payload:", authData);
