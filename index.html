@@ -51,33 +51,32 @@
           <button type="button" id="signupButton" class="btn btn-default">Login</button>
           <button type="button" id="registerButton" class="btn btn-default">Sign Up</button>
         </div>  
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="enterChat">
-              <div class="login"> <!--User login -->
-                <h4>Login:</h4>
-                <form>
-                  <p><input type="text" name="login" placeholder="User Email" id="loginEmail"></p>
-                  <p><input type="password" name="password" placeholder="Password" id="loginPassword"></p>
-                  <p class="submit"><input type="submit" name="commit" value="Login" id="loginAction"></p>
-                </form>
-              </div>
-              <div id="loginWarning"><p>Username invalid. Name should contain only letter and numbers.</p></div>
-              <div class="register"> <!--New user registration -->
-                <h4>Register:</h4>
-                <form>
-                  <p><input type="text" name="login" placeholder="User Email" id="registerUsername"></p>
-                  <p><input type="password" name="password" placeholder="Password" 
-                  id="registerPassword"></p>
-                  <p class="submit"><input type="submit" value="Register" id="registerAction"></p>
-                </form>
-              </div>
-              <div id="regWarning"><p>Username invalid. Name should contain only letter and numbers.</p></div>
-            </div>
-            <div id='firechat-wrapper'></div> <!--firechat initializing -->
-          </div> 
-        </div>  
-      </div>
+        
+        <div id='firechat-wrapper'></div> <!--firechat initializing -->
+         
+        <div class="enterChat"> <!--Login Modal -->
+          <div class="login"> <!--User login -->
+            <h4>Login:</h4>
+            <form>
+              <p><input type="text" name="login" placeholder="User Email" id="loginEmail"></p>
+              <p><input type="password" name="password" placeholder="Password" id="loginPassword"></p>
+              <p class="submit"><input type="submit" name="commit" value="Login" id="loginAction"></p>
+            </form>
+          </div>
+          
+          <div id="loginWarning"><p>Username invalid. Name should contain only letter and numbers.</p></div>
+          <div class="register"> <!--New user registration -->
+            <h4>Register:</h4>
+            <form>
+              <p><input type="text" name="login" placeholder="User Email" id="registerUsername"></p>
+              <p><input type="password" name="password" placeholder="Password" id="registerPassword"></p>
+              <p class="submit"><input type="submit" value="Register" id="registerAction"></p>
+            </form>
+          </div>
+          
+          <div id="regWarning"><p>Username invalid. Name should contain only letter and numbers.</p></div>
+        </div>
+      </div> 
     
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
