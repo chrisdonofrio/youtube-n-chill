@@ -258,6 +258,7 @@ $(document).ready(function() {
           videoId:  videoId,
           playerVars: {"controls": 0, "disablekb": 1},
           events: {
+            "onError": onErrorFunction,
             "onReady": onPlayerReady,
             "onStateChange": onPlayerStateChange
           }
@@ -271,6 +272,7 @@ $(document).ready(function() {
           videoId:  videoId,
           playerVars: {"controls": 0, "disablekb": 1},
           events: {
+            "onError": onErrorFunction,
             "onReady": onPlayerReady,
             "onStateChange": onPlayerStateChange
           }
