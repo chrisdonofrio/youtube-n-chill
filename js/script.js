@@ -283,6 +283,24 @@ $(document).ready(function() {
     }
   })
 
+// Downvotes, skip video
+
+    currentVideo.child("counter").on("value", updateDiv);
+
+    $(".downvote").on("click", function() {
+    currentVideo.child("counter").transaction(function(currentValue) {
+      return (currentValue || 0) + 1;
+    }, function(err, committed, fbaseVal) {
+      if(err) {
+        throw err;
+      }
+    });
+  });
+
+    function updateDiv(fbaseVal) {
+    console.log("I GOT HIT!", fbaseVal, fbaseVal.val());
+  }
+
   //takes YouTube URL as arguemnt and returns video ID
   function youtube_parser(url){
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
