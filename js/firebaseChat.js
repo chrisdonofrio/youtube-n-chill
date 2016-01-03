@@ -36,7 +36,7 @@
           console.log("Login Failed!", error);
         } else {
           console.log("Authenticated successfully with payload:", authData);
-          $("#loginModalLabel").html("Login successful! Your ready to chat");
+          $("#loginModalLabel").html("Login successful! You're ready to chat");
           $("#loginForm").hide();
           initChat(authData);
         }
