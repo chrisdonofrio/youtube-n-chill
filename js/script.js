@@ -109,6 +109,8 @@ $(document).ready(function() {
   $(".embedErrorAlert").hide();
   $(".videoNotFoundAlert").hide();
   $(".noSearchTerm").hide();
+  $(".urlQueueInput").hide();
+  $(".addVideoUrlBtn").hide();
 
   //on click function to hide embed error alert
     $(".confirmVideoSkippedBtn").on("click", function(){
@@ -231,6 +233,8 @@ $(document).ready(function() {
       });
       $(".urlInput").hide();
       $(".startVideoUrlBtn").hide();
+      $(".urlQueueInput").show();
+      $(".addVideoUrlBtn").show();
     }
    })
 
@@ -249,6 +253,8 @@ $(document).ready(function() {
       $(".urlInput").show();
       $(".urlInput").val("");
       $(".startVideoUrlBtn").show();
+      $(".urlQueueInput").hide();
+      $(".addVideoUrlBtn").hide();
       return;
     }else{
       if ($(".videoDiv").attr("class") === "videoDiv text-center col-md-8"){
@@ -263,6 +269,8 @@ $(document).ready(function() {
             "onStateChange": onPlayerStateChange
           }
         });
+        $(".urlQueueInput").show();
+        $(".addVideoUrlBtn").show();
         $(".urlInput").hide();
         $(".startVideoUrlBtn").hide();
       }else{
@@ -277,6 +285,8 @@ $(document).ready(function() {
             "onStateChange": onPlayerStateChange
           }
         });
+        $(".urlQueueInput").show();
+        $(".addVideoUrlBtn").show();
         $(".urlInput").hide();
         $(".startVideoUrlBtn").hide();
       }
