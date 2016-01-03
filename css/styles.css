@@ -22,20 +22,25 @@ button {
 
 #signinButton,
 #registerButton {
-  margin-top: 5px;
+  margin: 5px 10px 5px 0;
   padding-bottom: 2px;
   padding-top: 2px;
-  margin-right: 10px;
-  margin-bottom: 5px;
   border-radius: 10%;
+  background-color: #556B2F;
+  border: 0;
+  color: #fafafa;
+}
+
+#signinButton:hover,
+#registerButton:hover {
+	background-color: #2a3517;
 }
 
 .searchInput {
   width: 150px !important;
-  background-color: olive !important;
-  padding: 8px 15px !important;
+  padding: 5px 15px !important;
   background: rgba(50, 50, 50, 0.2) !important;
-  border: 0px solid #dbdbdb !important;
+  border: 1px solid #99a682 !important;
   font-family: 'Catamaran', sans-serif;
   text-transform: lowercase;
 }
@@ -58,8 +63,8 @@ button {
 }
 
 .searchBtn {
-  padding: 6px 15px;
-  left: -8px;
+  padding: 5px 15px;
+  left: -5px;
   border: 0;
   background-color: #556B2F;
   color: #fafafa;
@@ -129,41 +134,36 @@ button {
 }
 
 .hidePanelBtn {
-  background: #3498db;
-  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
-  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
-  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
-  background-image: -o-linear-gradient(top, #3498db, #2980b9);
-  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  background-color: #0c0c0c !important;
   -webkit-border-radius: 28;
   -moz-border-radius: 28;
   border-radius: 28px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 20px;
+  color: #fafafa;
+  font-size: 55px;
   padding: 40px 0px 40px 0px;
   text-decoration: none;
   margin-top: 65px;
-  margin-left: 240px;
+  margin-left: 230px;
+  border: 0;
 }
 
 .hidePanelBtn:hover {
-  background: #3cb0fd;
-  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background: #0c0c0c;
+/*  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
   background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
   background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
   background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);*/
   text-decoration: none;
 }
 
 .showPanelBtn {
-  background: #3498db;
-  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-color: #0c0c0c !important;
+/*  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
   background-image: -moz-linear-gradient(top, #3498db, #2980b9);
   background-image: -ms-linear-gradient(top, #3498db, #2980b9);
   background-image: -o-linear-gradient(top, #3498db, #2980b9);
-  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);*/
   -webkit-border-radius: 28;
   -moz-border-radius: 28;
   border-radius: 28px;
@@ -177,12 +177,12 @@ button {
 }
 
 .showPanelBtn:hover {
-  background: #3cb0fd;
-  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background: #0c0c0c;
+/*  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
   background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
   background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
   background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);*/
   text-decoration: none;
 }
 
