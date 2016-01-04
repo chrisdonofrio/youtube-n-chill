@@ -219,7 +219,6 @@ $(document).ready(function() {
       }
     })
   })
-    
 
   //add start video to DB
   $(".startVideoUrlBtn").on("click", function(){
