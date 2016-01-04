@@ -162,7 +162,7 @@ $(document).ready(function() {
   //hide searh panel on click
   $(document).on("click", ".hidePanelBtn", function(){
     $(".hidePanelBtn").toggleClass("hidePanelBtn showPanelBtn");
-    $(".showPanelBtn").html(">");
+    $(".showPanelBtn").html("<i class='fa fa-caret-right'>");
     currentVideo.once("value", function(snapshot) {
       $(".searchColumn").toggleClass("col-md-3 col-md-1");
       $(".searchInput").hide();
@@ -179,7 +179,7 @@ $(document).ready(function() {
   //show searh panel on click
   $(document).on("click", ".showPanelBtn", function(){
     $(".showPanelBtn").toggleClass("hidePanelBtn showPanelBtn");
-    $(".hidePanelBtn").html("<");
+    $(".hidePanelBtn").html("<i class='fa fa-caret-left'>");
     currentVideo.once("value", function(snapshot) {
       $(".searchColumn").toggleClass("col-md-3 col-md-1");
       $(".searchInput").show();
