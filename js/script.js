@@ -117,6 +117,20 @@ $(document).ready(function() {
       $(".alert").slideUp();
     })
 
+    queuedVideos.on("child_added", function(snapshot){
+      videoId = snapshot.val().vidId;
+      youtubeApiUrl = "https://www.googleapis.com/youtube/v3/videos?part=id%2Csnippet&id="+videoId+"&key=AIzaSyDh7vcT2FXjwM9cLOpOq8zOZ52MGr-TVtQ";
+      $.ajax({
+        type: "GET",
+        url: youtubeApiUrl,
+        success: youtubeApiSuccessHandler
+      });
+    })
+
+    function youtubeApiSuccessHandler(response){
+      newli = $("<li>")
+    }
+
   //shows an alert and move to next video if there is an error embeding a video
   function onErrorFunction(event){
     if (event.data === 100)
