@@ -112,6 +112,7 @@ $(document).ready(function() {
   $(".urlQueueInput").hide();
   $(".addVideoUrlBtn").hide();
 
+
   //on click function to hide embed error alert
     $(".confirmVideoSkippedBtn").on("click", function(){
       $(".alert").slideUp();
@@ -125,10 +126,17 @@ $(document).ready(function() {
         url: youtubeApiUrl,
         success: youtubeApiSuccessHandler
       });
-    })
+    });
+    
+  queuedVideos.on("child_removed", function(snapshot){
+    $("#queue").children().first().remove();
+  })
 
     function youtubeApiSuccessHandler(response){
-      newli = $("<li>")
+      newli = $("<li>");
+      videoTitle = response.items[0].snippet.title;
+      newli.append(videoTitle);
+      $("#queue").append(newli);
     }
 
   //shows an alert and move to next video if there is an error embeding a video
@@ -145,6 +153,7 @@ $(document).ready(function() {
     currentVideo.update({
       vidId: "donotdelete"
     })
+
     //changed current video to next in queue if there is one
     queuedVideos.limitToFirst(1).once("child_added", function(snapshot) { 
       $(".urlInput").hide();
