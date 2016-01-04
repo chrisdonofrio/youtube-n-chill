@@ -6,7 +6,12 @@ button {
   font-family: 'Catamaran', sans-serif;
   text-transform: lowercase;
 }
+              
 
+              /*FOOTER */
+#footerQueue {
+text-align: center;
+}              
 							/*NAVBAR*/
 
 .navbar {
