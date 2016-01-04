@@ -1,5 +1,5 @@
 body {
-  background-color: black;
+  background-color: #696969;
 }
 
 button {
@@ -7,9 +7,12 @@ button {
   text-transform: lowercase;
 }
 
+							/*NAVBAR*/
+
 .navbar {
-  background-color: rgba(50, 50, 50, 0.3);
+  background-color: #545454;
   border: 0;
+  border-radius: 8px;
 }
 
 .nav-title {
@@ -17,8 +20,54 @@ button {
   font-family: 'Catamaran', sans-serif;
   text-transform: lowercase;
   letter-spacing: 2px;
-  color: #556B2F;
+  color: #968a9d;
+  font-weight: bold;
+  font-style: italic;
 }
+
+ul label {
+	font-family: 'Catamaran', sans-serif;
+	text-transform: lowercase;
+	color: #968a9d;
+	font-style: italic;
+	margin-right: 15px;
+	margin-bottom: -30px;
+}
+
+							/*TEXT INPUT & PLACEHOLDERS*/
+
+textarea:focus, input:focus {
+    color: #9a9a9a;
+    letter-spacing: 0.2px;
+}
+
+::-webkit-input-placeholder {
+  color: #9a9a9a;
+  letter-spacing: 0.2px;
+  font-style: italic;
+}
+
+:-moz-placeholder {
+ /* Firefox 18- */
+  color: #9a9a9a;
+  letter-spacing: 0.2px;
+  font-style: italic;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #9a9a9a;
+  letter-spacing: 0.2px;
+  font-style: italic;
+}
+
+:-ms-input-placeholder {
+  color: #9a9a9a;
+  letter-spacing: 0.2px;
+  font-style: italic;
+}
+
+							/*SIGN IN BUTTONS*/
 
 #signinButton,
 #registerButton {
@@ -26,67 +75,112 @@ button {
   padding-bottom: 2px;
   padding-top: 2px;
   border-radius: 10%;
-  background-color: #556B2F;
-  border: 0;
-  color: #fafafa;
+  background-color: #786981;
+  border: 1px solid;
+  border-color: #9a9a9a;
+  color: #FAFAFA;
 }
 
 #signinButton:hover,
 #registerButton:hover {
-	background-color: #2a3517;
+	background-color: #695973;
+	border-color: #9a9a9a;
 }
+
+#signinButton:focus,
+#registerButton:focus {
+	background-color: #695973;
+	border-color: #9a9a9a;
+	outline: 0 none;
+}
+
+							/*SEARCH QUERY INPUT*/
 
 .searchInput {
   width: 150px !important;
   padding: 5px 15px !important;
+  margin: 5px;
   background: rgba(50, 50, 50, 0.2) !important;
-  border: 1px solid #99a682 !important;
+  border: 1px solid #637359 !important;
   font-family: 'Catamaran', sans-serif;
-  text-transform: lowercase;
+  font-weight: bold;
+  outline: 0 none;
 }
 
 .searchInput:focus {
-  background-color: #99a682 !important;
+  background-color: #493e50 !important;
 }
+
+							/*SEARCH PANEL*/
 
 .panel {
   border: 1px;
+  border-radius: 8px;
+  background-color: #545454 !important;
 }
 
-.searchColumn {
-  height: 315px;
-}
-
-.searchPanel {
-  background-color: #0c0c0c !important;
-  border: 0;
-}
+							/*SEARCH BUTTON*/
 
 .searchBtn {
   padding: 5px 15px;
-  left: -5px;
   border: 0;
-  background-color: #556B2F;
-  color: #fafafa;
+  background-color: #786981;
+  color: #FAFAFA;
+  border: 1px solid;
+  border-color: #9a9a9a;
 }
 
 .searchBtn:hover {
-  background-color: #2a3517;
+  background-color: #695973;
+  outline: 0 none;
+  border-color: #9a9a9a;
 }
+
+.searchBtn:active {
+  background-color: #695973;
+  outline: 0 none;
+  border-color: #9a9a9a;
+}
+
+.searchBtn:focus {
+  background-color: #695973;
+  outline: 0 none;
+  border-color: #9a9a9a;
+}
+
+							/*ADD VIDEO BUTTONS*/
 
 .addVideoUrlBtn,
 .startVideoUrlBtn {
   display: inline-block;
   width: 50%;
-  background-color: #556B2F;
+  background-color: #786981;
   margin: 5px;
   border: 0;
+  color: #FAFAFA;
+  border: 1px solid;
+  border-color: #9a9a9a;
 }
 
 .addVideoUrlBtn:hover,
 .startVideoUrlBtn:hover {
-  background-color: #2a3517;
+  background-color: #695973;
+  border-color: #9a9a9a;
 }
+
+.addVideoUrlBtn:active,
+.startVideoUrlBtn:active {
+  background-color: #695973;
+  border-color: #9a9a9a;
+}
+
+.addVideoUrlBtn:focus,
+.startVideoUrlBtn:focus {
+  background-color: #695973;
+  border-color: #9a9a9a;
+}
+
+							/*URL INPUT*/
 
 .urlQueueInput,
 .urlInput {
@@ -95,95 +189,114 @@ button {
   background-color: olive !important;
   padding: 8px 15px !important;
   background: rgba(50, 50, 50, 0.2) !important;
-  border: 1px solid #99a682 !important;
-  text-transform: lowercase;
+  border: 1px solid #637359 !important;
+  font-size: 14px;
+  font-weight: bold;
   font-family: 'Catamaran', sans-serif;
+  outline: 0 none;
 }
 
 .urlQueueInput:focus,
 .urlInput:focus {
-  background-color: #99a682 !important;
+  background-color: #493e50 !important;
 }
 
-::-webkit-input-placeholder {
-  color: #452f6b;
-}
-
-:-moz-placeholder {
- /* Firefox 18- */
-  color: #452f6b;
-}
-
-::-moz-placeholder {
-  /* Firefox 19+ */
-  color: #452f6b;
-}
-
-:-ms-input-placeholder {
-  color: #452f6b;
-}
+							/*ALERTS*/
 
 .alert {
   margin-top: 5px;
   margin-bottom: 5px;
+  background-color: #c3bcc7;
+  border: none;
+  border-radius: 2px;
+  color: #54475c;
 }
 
-.largePlayer {
-  width: 100%;
-  height: 420px;
+							/*MODALS*/
+
+
+.modal-dialog {
+	font-family: 'Catamaran', sans-serif;
+	text-transform: lowercase;
+	color: #968a9d;
 }
+
+.modal-header {
+	background-color: #545454;
+}
+
+.modal-body {
+  background-color: #696969;
+}
+
+form label {
+	font-size: 17px;
+	font-weight: bold;
+	font-style: italic;
+	margin-bottom: -50px;
+	padding-top: 2px;
+}
+
+.example {
+	font-size: 13px;
+}
+
+.submit {
+	padding-top: 2px;
+}
+
+#registerUsername,
+#registerPassword,
+#loginEmail,
+#loginPassword {
+	background: rgba(50, 50, 50, 0.2) !important;
+	border: 1px solid #637359 !important;
+	outline: 0 none;
+}
+
+#registerUsername:focus,
+#registerPassword:focus,
+#loginEmail:focus,
+#loginPassword:focus {
+	background-color: #493e50 !important;
+}
+
+#registerUsername:active,
+#registerPassword:active,
+#loginEmail:active,
+#loginPassword:active {
+  background-color: #493e50 !important;
+}
+
+							/*TOGGLE PANEL BUTTON*/
 
 .hidePanelBtn {
-  background-color: #0c0c0c !important;
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 28px;
-  color: #fafafa;
+  background-color: #545454 !important;
+  color: #786981;
   font-size: 55px;
-  padding: 40px 0px 40px 0px;
-  text-decoration: none;
-  margin-top: 65px;
-  margin-left: 230px;
+  margin-left: 210px;
+  margin-top: 50px;
   border: 0;
 }
 
 .hidePanelBtn:hover {
-  background: #0c0c0c;
-/*  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);*/
-  text-decoration: none;
+  background-color: #545454 !important;
+  color: #786981;
+  font-size: 55px;
 }
 
 .showPanelBtn {
-  background-color: #0c0c0c !important;
-/*  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
-  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
-  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
-  background-image: -o-linear-gradient(top, #3498db, #2980b9);
-  background-image: linear-gradient(to bottom, #3498db, #2980b9);*/
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 28px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 20px;
-  padding: 40px 0px 40px 0px;
-  text-decoration: none;
-  margin-top: 100px;
-  margin-left: 45px;
+  background-color: #545454 !important;
+  color: #786981;
+  font-size: 55px;
+  margin-top: 50px;
+  margin-left: 20px;
 }
 
 .showPanelBtn:hover {
-  background: #0c0c0c;
-/*  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);*/
-  text-decoration: none;
+  background-color: #545454 !important;
+  color: #786981;
+  font-size: 55px;
 }
 
 .confirmVideoSkippedBtn {
