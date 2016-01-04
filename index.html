@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>YouTube N Chill</title>
-    <!-- Google Fonts -->
+  <!-- Google Fonts -->
   <link href='https://fonts.googleapis.com/css?family=Catamaran:100' rel='stylesheet' type='text/css'>
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -57,23 +57,21 @@
         <div class="alert alert-danger embedErrorAlert" id="videoNotFound" role="alert">
          Sorry, the next video in the queue was either private or was deleted from YouTube by the creator, video skipped.<button class="btn btn-primary btn-xs confirmVideoSkippedBtn">OK</button>
         </div>
-		<div class="video-container">
-		<input type="text" class="urlInput" placeholder="enter video URL here..." /><button class="btn startVideoUrlBtn btn-primary">Choose Starting Video</button>
-        <div class="alert alert-danger noTextAlertStart" role="alert">
-          Please Enter a valid YouTube URL
-        </div>
-        <input type="text" class="urlQueueInput" placeholder="enter video URL here..." /><button class="btn addVideoUrlBtn btn-primary">Add Video to Queue</button>
-        <div class="alert alert-info videoAddedAlert" role="alert">
-         Added to Queue!
-        </div>
-        <div class="alert alert-danger noTextAlertAdded" role="alert">
-         Please Enter a valid YouTube URL
-        </div>
+		    <div class="video-container">
+		      <input type="text" class="urlInput" placeholder="enter video URL here..." /><button class="btn startVideoUrlBtn btn-primary">Choose   Starting Video</button>
+          <div class="alert alert-danger noTextAlertStart" role="alert">
+            Please Enter a valid YouTube URL
+          </div>
+          
         </div>
       </div>
       <!--Chat--> 
-      <div class="col-md-3">
-        <div id='firechat-wrapper'></div> <!--firechat initializing -->
+      <div class="col-md-3" id="chatPanel">
+        <div class="panel panel-default">
+          <div class="panel body">
+            <div id='firechat-wrapper'></div> <!--firechat initializing -->
+          </div>
+        </div>  
         <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"> <!--login modal -->
           <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
@@ -96,7 +94,7 @@
             </div> 
           </div>
         </div>  
-        <div class="modal fade" id="registration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"><!-- registration modal -->
+        <div class="modal fade" id="registration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"> <!-- registration modal -->
           <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -120,39 +118,21 @@
           </div> 
         </div>
       </div>
+     </div> 
       <!-- Footer -->
-<div class="navbar-footer">
-  <nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-          <div class="col-md-6 col-md-offset-3 videoDiv text-center">
-        <!--div that YouTube's API will replce with an iFrame-->
-        <div id="player"></div>
-        <!-- end div-->
-        <div class="alert alert-danger embedErrorAlert" id="embedNotAllowed" role="alert">
-         Sorry, the owner of the next video in the queue does not allow embedding on other sites, video skipped. <button class="btn btn-primary btn-xs confirmVideoSkippedBtn">OK</button>
-        </div>
-        <div class="alert alert-danger embedErrorAlert" id="videoNotFound" role="alert">
-         Sorry, the next video in the queue was either private or was deleted from YouTube by the creator, video skipped.<button class="btn btn-primary btn-xs confirmVideoSkippedBtn">OK</button>
-        </div>
-		<div class="video-container">
-		<input type="text" class="urlInput" placeholder="enter video URL here..." /><button class="btn startVideoUrlBtn btn-primary">Choose Starting Video</button>
-        <div class="alert alert-danger noTextAlertStart" role="alert">
-          Please Enter a valid YouTube URL
-        </div>
-        <input type="text" class="urlQueueInput" placeholder="enter video URL here..." /><button class="btn addVideoUrlBtn btn-primary">Add Video to Queue</button>
+    <div class="navbar-footer">
+      <nav class="navbar navbar-default navbar-fixed-bottom" id="footerQueue"> 
+        <input type="text" class="urlQueueInput" placeholder="enter video URL here..." /><button class="btn addVideoUrlBtn btn-primary">  
+          Added Video to Queue</button>
         <div class="alert alert-info videoAddedAlert" role="alert">
-         Added to Queue!
+          Added to Queue!
         </div>
         <div class="alert alert-danger noTextAlertAdded" role="alert">
          Please Enter a valid YouTube URL
         </div>
-        </div>
-      </div>
+      </nav>   
     </div>
-  </nav>   
-</div>
-    </div> 
-  </div>  
+   
 
   <script src="http://www.youtube.com/player_api"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
