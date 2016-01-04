@@ -192,6 +192,7 @@ $(document).ready(function() {
       $(".searchColumn").toggleClass("col-md-3 col-md-1");
       $(".searchInput").hide();
       $(".searchBtn").hide();
+      $("#queue").hide();
       $(".videoDiv").toggleClass("col-md-6 col-md-8");
       videoId = snapshot.val().vidId;
       //if there is a video playing currently
@@ -209,6 +210,7 @@ $(document).ready(function() {
       $(".searchColumn").toggleClass("col-md-3 col-md-1");
       $(".searchInput").show();
       $(".searchBtn").show();
+      $("#queue").show();
       $(".videoDiv").toggleClass("col-md-6 col-md-8");
       videoId = snapshot.val().vidId;
       //if there is a video playing currently
