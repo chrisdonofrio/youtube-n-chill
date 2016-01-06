@@ -199,9 +199,9 @@ $(document).ready(function() {
         newBr = $("<br>");
         newBtn = $("<button id='"+videoId+"' class='btn btn-priamry addVideoSearchBtn'>");
         newBtn.html("Add To Queue");
-        newAlertDiv = $("<div class'alert alert-info'>");
-        newAlertDiv.html("Added!");
-        newLi.append(newImg).append(newBtn).append(newAlertDiv).append(newBr).append(newA);
+        newAlertDiv = $("<div class='alert alert-info videoaddedsearchalert"+videoId+"'>");
+        newAlertDiv.html("Added to Queue!");
+        newLi.append(newImg).append(newBtn).append(newBr).append(newA).append(newAlertDiv);
         $("#searchResults").append(newLi);
         newAlertDiv.hide();
       }
@@ -211,7 +211,8 @@ $(document).ready(function() {
   $(document).on("click", ".addVideoSearchBtn", function(){
     videoId = $(this).attr("id");
     url = "https://www.youtube.com/watch?v="+$(this).attr("id");
-    $(".videoAddedSearchAlert").slideDown().delay(1500).slideUp();
+    alertClass= "videoaddedsearchalert"+videoId;
+    $("."+alertClass).slideDown().delay(1500).slideUp();
     queuedVideos.push({
       vidId: videoId,
       url: url
