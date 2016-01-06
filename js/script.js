@@ -114,30 +114,37 @@ $(document).ready(function() {
 
 
   //on click function to hide embed error alert
-    $(".confirmVideoSkippedBtn").on("click", function(){
-      $(".alert").slideUp();
-    })
+  $(".confirmVideoSkippedBtn").on("click", function(){
+    $(".alert").slideUp();
+  })
 
-    queuedVideos.on("child_added", function(snapshot){
-      videoId = snapshot.val().vidId;
-      youtubeApiUrl = "https://www.googleapis.com/youtube/v3/videos?part=id%2Csnippet&id="+videoId+"&key=AIzaSyDh7vcT2FXjwM9cLOpOq8zOZ52MGr-TVtQ";
-      $.ajax({
-        type: "GET",
-        url: youtubeApiUrl,
-        success: youtubeApiSuccessHandlerQueue
-      });
+  queuedVideos.on("child_added", function(snapshot){
+    videoId = snapshot.val().vidId;
+    youtubeApiUrl = "https://www.googleapis.com/youtube/v3/videos?part=id%2Csnippet&id="+videoId+"&key=AIzaSyDh7vcT2FXjwM9cLOpOq8zOZ52MGr-TVtQ";
+    $.ajax({
+      type: "GET",
+      url: youtubeApiUrl,
+      success: youtubeApiSuccessHandlerQueue
     });
-    
+  });
+
+  database.on("child_removed", function(snapshot){
+    console.log(snapshot.val());
+    if (snapshot.val() === queuedVideos);
+      $(".queuePanel").addClass("hidden");
+  })
+
   queuedVideos.on("child_removed", function(snapshot){
     $("#queue").children().first().remove();
   })
 
-    function youtubeApiSuccessHandlerQueue(response){
-      newli = $("<li>");
-      videoTitle = response.items[0].snippet.title;
-      newli.append(videoTitle);
-      $("#queue").append(newli);
-    }
+  function youtubeApiSuccessHandlerQueue(response){
+    newli = $("<li>");
+    videoTitle = response.items[0].snippet.title;
+    newli.append(videoTitle);
+    $("#queue").append(newli);
+    $(".queuePanel").removeClass("hidden");
+  }
 
   //shows an alert and move to next video if there is an error embeding a video
   function onErrorFunction(event){

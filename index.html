@@ -48,8 +48,6 @@
             <div class="alert alert-danger noSearchTerm" role="alert">
               Enter a search term!
             </div>
-            <ol id="queue">Up Next:
-            </ol>
           </div>
         </div>
       </div>
@@ -57,6 +55,12 @@
         <!--div that YouTube's API will replce with an iFrame-->
         <div id="player"></div>
         <!-- end div-->
+        <div class="panel panel-default">
+          <div class="panel-body queuePanel hidden">        
+            <ol id="queue">Up Next:
+            </ol>
+          </div>
+        </div>
         <div class="alert alert-danger embedErrorAlert" id="embedNotAllowed" role="alert">
          Sorry, the owner of the next video in the queue does not allow embedding on other sites, video skipped. <button class="btn btn-primary btn-xs confirmVideoSkippedBtn">OK</button>
         </div>

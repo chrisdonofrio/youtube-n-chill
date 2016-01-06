@@ -370,3 +370,9 @@ a:hover{
   color: #786981;
   border-color:#545454;
 }
+
+.queuePanel{
+  text-align: left;
+  height: 130px;
+  overflow: auto;
+}
