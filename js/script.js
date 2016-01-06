@@ -130,8 +130,9 @@ $(document).ready(function() {
 
   database.on("child_removed", function(snapshot){
     console.log(snapshot.val());
-    if (snapshot.val() === queuedVideos);
+    if (snapshot.val() === queuedVideos){
       $(".queuePanel").addClass("hidden");
+    }
   })
 
   queuedVideos.on("child_removed", function(snapshot){
