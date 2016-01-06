@@ -188,21 +188,35 @@ $(document).ready(function() {
     for (i = 0; i < 50; i++) { 
       if (response.items[i].id.kind ==="youtube#video"){
         resultTitle = response.items[i].snippet.title;
+        videoId = response.items[i].id.videoId
         newLi = $("<li>");
         newA= $("<a class='resultLink'>");
         newA.html(resultTitle)
-        newA.attr("href", "https://www.youtube.com/watch?v="+response.items[i].id.videoId);
+        newA.attr("href", "https://www.youtube.com/watch?v="+videoId);
         newA.attr("target", "_blank");
         newImg = $("<img>");
         newImg.attr("src", response.items[i].snippet.thumbnails.default.url);
         newBr = $("<br>");
-        newBtn = $("<button class='btn btn-priamry addVideoSearchBtn'>");
+        newBtn = $("<button id='"+videoId+"' class='btn btn-priamry addVideoSearchBtn'>");
         newBtn.html("Add To Queue");
-        newLi.append(newImg).append(newBtn).append(newBr).append(newA);
+        newAlertDiv = $("<div class'alert alert-info'>");
+        newAlertDiv.html("Added!");
+        newLi.append(newImg).append(newBtn).append(newAlertDiv).append(newBr).append(newA);
         $("#searchResults").append(newLi);
+        newAlertDiv.hide();
       }
     } 
   }
+
+  $(document).on("click", ".addVideoSearchBtn", function(){
+    videoId = $(this).attr("id");
+    url = "https://www.youtube.com/watch?v="+$(this).attr("id");
+    $(".videoAddedSearchAlert").slideDown().delay(1500).slideUp();
+    queuedVideos.push({
+      vidId: videoId,
+      url: url
+    });
+  });
 
   //hide searh panel on click
   $(document).on("click", ".hidePanelBtn", function(){
