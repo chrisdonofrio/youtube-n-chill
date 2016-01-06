@@ -154,7 +154,7 @@ $(document).ready(function() {
       vidId: "donotdelete"
     })
 
-    //changed current video to next in queue if there is one
+    //changes current video to next in queue if there is one
     queuedVideos.limitToFirst(1).once("child_added", function(snapshot) { 
       $(".urlInput").hide();
       $(".startVideoUrlBtn").hide();
@@ -213,10 +213,20 @@ $(document).ready(function() {
     url = "https://www.youtube.com/watch?v="+$(this).attr("id");
     alertClass= "videoaddedsearchalert"+videoId;
     $("."+alertClass).slideDown().delay(1500).slideUp();
-    queuedVideos.push({
-      vidId: videoId,
-      url: url
-    });
+    currentVideo.limitToLast(1).once("value", function(snapshot) {
+      currentVideoId = snapshot.val().vidId;
+      if (currentVideoId==="donotdelete"){
+        currentVideo.update({
+          vidId: videoId,
+          url: url
+        });
+      }else{
+        queuedVideos.push({
+          vidId: videoId,
+          url: url
+        });
+      }
+    }) 
   });
 
   //hide searh panel on click
