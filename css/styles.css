@@ -303,6 +303,7 @@ form label {
   background-color: #545454 !important;
   color: #786981;
   font-size: 55px;
+  border-color:#545454;
 }
 
 .confirmVideoSkippedBtn {
