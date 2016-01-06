@@ -167,6 +167,7 @@ textarea:focus, input:focus {
   border-color: #9a9a9a;
 }
 
+.addVideoSearchBtn:hover,
 .addVideoUrlBtn:hover,
 .startVideoUrlBtn:hover {
   background-color: #695973;
@@ -302,8 +303,70 @@ form label {
   background-color: #545454 !important;
   color: #786981;
   font-size: 55px;
+  border-color:#545454;
 }
 
 .confirmVideoSkippedBtn {
   margin-left: 5px;
+}
+
+.addVideoSearchBtn{
+  color: #FAFAFA;
+  margin-left: 10px;
+  background-color: #786981;
+  border: 1px solid;
+  border-color: #9a9a9a;
+}
+
+.searchPanel{
+  height: 450px;
+  overflow: auto;
+}
+
+::-webkit-scrollbar
+{
+  width: 12px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.5);
+}
+
+a{
+  color: #786981;
+}
+
+a:hover{
+  color: #695973;
+
+}
+
+.hidePanelBtn{
+  position: absolute;
+  left: 95px;
+}
+
+.showPanelBtn{
+  position: absolute;
+  left: 55px;
+  border-color:#545454;
+}
+
+.showPanelBtn:focus { 
+  outline: none;
+  color: #786981;
+  border-color:#545454;
+}
+
+.hidePanelBtn:focus { 
+  outline: none;
+  color: #786981;
+  border-color:#545454;
 }
