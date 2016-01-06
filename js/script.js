@@ -180,13 +180,18 @@ $(document).ready(function() {
   //search
   $(".searchBtn").on("click", function(){
     searchQuery = $(".searchInput").val().trim();
-    youtubeApiUrl = "https://www.googleapis.com/youtube/v3/search?q="+searchQuery+"&part=snippet&maxResults=50&key=AIzaSyDh7vcT2FXjwM9cLOpOq8zOZ52MGr-TVtQ"
-    $.ajax({
-        type: "GET",
-        url: youtubeApiUrl,
-        success: youtubeApiSuccessHandlerSearch
-    
-    })
+    if (searchQuery === ""){
+      $(".noSearchTerm").slideDown().delay(1500).slideUp();
+      return;
+    }else{
+      youtubeApiUrl = "https://www.googleapis.com/youtube/v3/search?q="+searchQuery+"&part=snippet&maxResults=50&key=AIzaSyDh7vcT2FXjwM9cLOpOq8zOZ52MGr-TVtQ"
+      $.ajax({
+          type: "GET",
+          url: youtubeApiUrl,
+          success: youtubeApiSuccessHandlerSearch
+      
+      })
+    }
   })
 
   function youtubeApiSuccessHandlerSearch(response){
