@@ -358,3 +358,15 @@ a:hover{
   left: 55px;
   border-color:#545454;
 }
+
+.showPanelBtn:focus { 
+  outline: none;
+  color: #786981;
+  border-color:#545454;
+}
+
+.hidePanelBtn:focus { 
+  outline: none;
+  color: #786981;
+  border-color:#545454;
+}
