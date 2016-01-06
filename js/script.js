@@ -173,7 +173,7 @@ $(document).ready(function() {
   //search
   $(".searchBtn").on("click", function(){
     searchQuery = $(".searchInput").val().trim();
-    youtubeApiUrl = "https://www.googleapis.com/youtube/v3/search?q="+searchQuery+"&part=snippet&maxResults=50&key=AIzaSyCthoQvRopOy90fUo9GjZu2A8-7Kvj7gAw"
+    youtubeApiUrl = "https://www.googleapis.com/youtube/v3/search?q="+searchQuery+"&part=snippet&maxResults=50&key=AIzaSyDh7vcT2FXjwM9cLOpOq8zOZ52MGr-TVtQ"
     $.ajax({
         type: "GET",
         url: youtubeApiUrl,

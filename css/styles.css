@@ -355,4 +355,5 @@ a:hover{
 .showPanelBtn{
   position: absolute;
   left: 55px;
+  border-color:#545454;
 }
