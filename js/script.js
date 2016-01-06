@@ -1,8 +1,8 @@
 //link to firebase database
-var database = new Firebase("https://dazzling-fire-1875.firebaseio.com/")
-var currentVideo = new Firebase("https://dazzling-fire-1875.firebaseio.com/currentVideo")
+var database = new Firebase("https://dazzling-fire-1875.firebaseio.com/");
+var currentVideo = new Firebase("https://dazzling-fire-1875.firebaseio.com/currentVideo");
 var queuedVideos =  new Firebase("https://dazzling-fire-1875.firebaseio.com/queuedVideos");
-var timer = new Firebase("https://dazzling-fire-1875.firebaseio.com/timer")
+var timer = new Firebase("https://dazzling-fire-1875.firebaseio.com/timer");
 
 //takes YouTube URL and returns video ID
 function youtube_parser(url){
@@ -22,13 +22,13 @@ function onPlayerReady(event) {
   event.target.playVideo();
   timer.set({
       seconds: 0
-    })
+    });
   setInterval(function(){
     currentTime = player.getCurrentTime();
     timer.set({
       seconds: currentTime
     })
-  }, 1000)
+  }, 1000);
 }
 
 function onPlayerReadyWithSeek(event) {
@@ -43,7 +43,7 @@ function onPlayerReadyWithSeek(event) {
     timer.set({
       seconds: currentTime
     })
-  }, 1000)
+  }, 1000);
 }
 
 
@@ -124,7 +124,7 @@ $(document).ready(function() {
       $.ajax({
         type: "GET",
         url: youtubeApiUrl,
-        success: youtubeApiSuccessHandler
+        success: youtubeApiSuccessHandlerQueue
       });
     });
     
@@ -132,7 +132,7 @@ $(document).ready(function() {
     $("#queue").children().first().remove();
   })
 
-    function youtubeApiSuccessHandler(response){
+    function youtubeApiSuccessHandlerQueue(response){
       newli = $("<li>");
       videoTitle = response.items[0].snippet.title;
       newli.append(videoTitle);
@@ -173,16 +173,36 @@ $(document).ready(function() {
   //search
   $(".searchBtn").on("click", function(){
     searchQuery = $(".searchInput").val().trim();
-    if (searchQuery === ""){
-      $(".noSearchTerm").slideDown().delay(1500).slideUp();
-    }else{
-      window.open("https://www.youtube.com/results?search_query="+searchQuery, 
-        "_blank", 
-        "toolbar=no, scrollbars=yes, resizable=yes, top=250, left=200, width=500, height=500")
-      $(".searchInput").val("");
-      return false;
-    }
+    youtubeApiUrl = "https://www.googleapis.com/youtube/v3/search?q="+searchQuery+"&part=snippet&maxResults=50&key=AIzaSyDh7vcT2FXjwM9cLOpOq8zOZ52MGr-TVtQ"
+    $.ajax({
+        type: "GET",
+        url: youtubeApiUrl,
+        success: youtubeApiSuccessHandlerSearch
+    
+    })
   })
+
+  function youtubeApiSuccessHandlerSearch(response){
+    console.log(response.items);
+    $("#searchResults").empty();
+    for (i = 0; i < 50; i++) { 
+      if (response.items[i].id.kind ==="youtube#video"){
+        resultTitle = response.items[i].snippet.title;
+        newLi = $("<li>");
+        newA= $("<a class='resultLink'>");
+        newA.html(resultTitle)
+        newA.attr("href", "https://www.youtube.com/watch?v="+response.items[i].id.videoId);
+        newA.attr("target", "_blank");
+        newImg = $("<img>");
+        newImg.attr("src", response.items[i].snippet.thumbnails.default.url);
+        newBr = $("<br>");
+        newBtn = $("<button class='btn btn-priamry addVideoSearchBtn'>");
+        newBtn.html("Add To Queue");
+        newLi.append(newImg).append(newBtn).append(newBr).append(newA);
+        $("#searchResults").append(newLi);
+      }
+    } 
+  }
 
   //hide searh panel on click
   $(document).on("click", ".hidePanelBtn", function(){
@@ -192,6 +212,7 @@ $(document).ready(function() {
       $(".searchColumn").toggleClass("col-md-3 col-md-1");
       $(".searchInput").hide();
       $(".searchBtn").hide();
+      $("#searchResults").hide();
       $("#queue").hide();
       $(".videoDiv").toggleClass("col-md-6 col-md-8");
       videoId = snapshot.val().vidId;
@@ -210,6 +231,7 @@ $(document).ready(function() {
       $(".searchColumn").toggleClass("col-md-3 col-md-1");
       $(".searchInput").show();
       $(".searchBtn").show();
+      $("#searchResults").show();
       $("#queue").show();
       $(".videoDiv").toggleClass("col-md-6 col-md-8");
       videoId = snapshot.val().vidId;
