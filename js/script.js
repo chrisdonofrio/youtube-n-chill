@@ -129,8 +129,8 @@ $(document).ready(function() {
   });
 
   database.on("child_removed", function(snapshot){
-    console.log(snapshot.val());
-    if (snapshot.val() === queuedVideos){
+    console.log(snapshot.key());
+    if (snapshot.key() === "queuedVideos"){
       $(".queuePanel").addClass("hidden");
     }
   })
@@ -251,7 +251,7 @@ $(document).ready(function() {
       $(".searchInput").hide();
       $(".searchBtn").hide();
       $("#searchResults").hide();
-      $("#queue").hide();
+      $(".queuePanel").css("height", "-=30")
       $(".videoDiv").toggleClass("col-md-6 col-md-8");
       videoId = snapshot.val().vidId;
       //if there is a video playing currently
@@ -270,7 +270,7 @@ $(document).ready(function() {
       $(".searchInput").show();
       $(".searchBtn").show();
       $("#searchResults").show();
-      $("#queue").show();
+      $(".queuePanel").css("height", "+=30")
       $(".videoDiv").toggleClass("col-md-6 col-md-8");
       videoId = snapshot.val().vidId;
       //if there is a video playing currently
