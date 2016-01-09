@@ -1,3 +1,5 @@
+							/*GENERAL*/
+
 body {
   background-color: #696969;
 }
@@ -97,8 +99,8 @@ textarea:focus, input:focus {
 							/*SEARCH QUERY INPUT*/
 
 .searchInput {
-  width: 150px !important;
-  padding: 5px 15px !important;
+  width: 150px;
+  padding: 5px 15px;
   margin: 5px;
   background: rgba(50, 50, 50, 0.2) !important;
   border: 1px solid #637359 !important;
@@ -186,7 +188,6 @@ textarea:focus, input:focus {
 .urlInput {
   padding: 5px;
   width: 250px;
-  background-color: olive !important;
   padding: 8px 15px !important;
   background: rgba(50, 50, 50, 0.2) !important;
   border: 1px solid #637359 !important;
@@ -218,7 +219,7 @@ textarea:focus, input:focus {
 .modal-dialog {
 	font-family: 'Catamaran', sans-serif;
 	text-transform: lowercase;
-	color: #968a9d;
+	color: #afa6b4;
 }
 
 .modal-header {
