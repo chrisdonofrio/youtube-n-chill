@@ -283,6 +283,8 @@ form label {
   margin-left: 210px;
   margin-top: 50px;
   border: 0;
+  position: fixed;
+  left: 105px;
 }
 
 .hidePanelBtn:hover {
@@ -294,9 +296,12 @@ form label {
 .showPanelBtn {
   background-color: #545454 !important;
   color: #786981;
+  border-color:#545454;
   font-size: 55px;
   margin-top: 50px;
   margin-left: 20px;
+  position: fixed;
+  left: 45px;
 }
 
 .showPanelBtn:hover {
@@ -346,17 +351,6 @@ a{
 a:hover{
   color: #695973;
 
-}
-
-.hidePanelBtn{
-  position: absolute;
-  left: 95px;
-}
-
-.showPanelBtn{
-  position: absolute;
-  left: 55px;
-  border-color:#545454;
 }
 
 .showPanelBtn:focus { 
