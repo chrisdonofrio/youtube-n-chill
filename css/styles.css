@@ -300,8 +300,8 @@ form label {
   font-size: 55px;
   margin-top: 50px;
   margin-left: 20px;
-  position: fixed;
-  left: 45px;
+  position: absolute;
+  left: 65px;
 }
 
 .showPanelBtn:hover {
