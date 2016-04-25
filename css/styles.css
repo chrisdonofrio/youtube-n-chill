@@ -1,3 +1,15 @@
+html, body, .searchPanelDefault {
+  height: 100%;
+}
+
+.searchRow {
+  height: 80%
+}
+
+.searchColumn{
+  height: 90%;
+}
+
 body {
   background-color: #696969;
 }
@@ -323,7 +335,7 @@ form label {
 }
 
 .searchPanel{
-  height: 450px;
+  height:100%;
   overflow: auto;
 }
 
