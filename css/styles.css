@@ -45,7 +45,7 @@ text-align: center;
 ul label {
 	font-family: 'Catamaran', sans-serif;
 	text-transform: lowercase;
-	color: #968a9d;
+	color: #BF4E48;
 	font-style: italic;
 	margin-right: 15px;
 	margin-bottom: -30px;
@@ -92,7 +92,7 @@ textarea:focus, input:focus {
   padding-bottom: 2px;
   padding-top: 2px;
   border-radius: 10%;
-  background-color: #786981;
+  background-color: #995C57;
   border: 1px solid;
   border-color: #9a9a9a;
   color: #FAFAFA;
@@ -100,13 +100,13 @@ textarea:focus, input:focus {
 
 #signinButton:hover,
 #registerButton:hover {
-	background-color: #695973;
+	background-color: #BF4E48;
 	border-color: #9a9a9a;
 }
 
 #signinButton:focus,
 #registerButton:focus {
-	background-color: #695973;
+	background-color: #BF4E48;
 	border-color: #9a9a9a;
 	outline: 0 none;
 }
@@ -141,26 +141,26 @@ textarea:focus, input:focus {
 .searchBtn {
   padding: 5px 15px;
   border: 0;
-  background-color: #786981;
+  background-color: #995C57;
   color: #FAFAFA;
   border: 1px solid;
   border-color: #9a9a9a;
 }
 
 .searchBtn:hover {
-  background-color: #695973;
+  background-color: #BF4E48;
   outline: 0 none;
   border-color: #9a9a9a;
 }
 
 .searchBtn:active {
-  background-color: #695973;
+  background-color: #BF4E48;
   outline: 0 none;
   border-color: #9a9a9a;
 }
 
 .searchBtn:focus {
-  background-color: #695973;
+  background-color: #BF4E48;
   outline: 0 none;
   border-color: #9a9a9a;
 }
@@ -171,7 +171,7 @@ textarea:focus, input:focus {
 .startVideoUrlBtn {
   display: inline-block;
   width: 50%;
-  background-color: #786981;
+  background-color: #995C57;
   margin: 5px;
   border: 0;
   color: #FAFAFA;
@@ -182,19 +182,19 @@ textarea:focus, input:focus {
 .addVideoSearchBtn:hover,
 .addVideoUrlBtn:hover,
 .startVideoUrlBtn:hover {
-  background-color: #695973;
+  background-color: #BF4E48;
   border-color: #9a9a9a;
 }
 
 .addVideoUrlBtn:active,
 .startVideoUrlBtn:active {
-  background-color: #695973;
+  background-color: #BF4E48;
   border-color: #9a9a9a;
 }
 
 .addVideoUrlBtn:focus,
 .startVideoUrlBtn:focus {
-  background-color: #695973;
+  background-color: #BF4E48;
   border-color: #9a9a9a;
 }
 
@@ -236,7 +236,7 @@ textarea:focus, input:focus {
 .modal-dialog {
 	font-family: 'Catamaran', sans-serif;
 	text-transform: lowercase;
-	color: #968a9d;
+	color: #BF4E48;
 }
 
 .modal-header {
@@ -290,7 +290,7 @@ form label {
 
 .hidePanelBtn {
   background-color: #545454 !important;
-  color: #786981;
+  color: #995C57;
   font-size: 55px;
   margin-left: 90%;
   margin-top: -20%;
@@ -300,13 +300,13 @@ form label {
 
 .hidePanelBtn:hover {
   background-color: #545454 !important;
-  color: #786981;
+  color: #995C57;
   font-size: 55px;
 }
 
 .showPanelBtn {
   background-color: #545454 !important;
-  color: #786981;
+  color: #995C57;
   border-color:#545454;
   font-size: 55px;
   margin-top: -15px;
@@ -317,7 +317,7 @@ form label {
 
 .showPanelBtn:hover {
   background-color: #545454 !important;
-  color: #786981;
+  color: #995C57;
   font-size: 55px;
   border-color:#545454;
 }
@@ -329,7 +329,7 @@ form label {
 .addVideoSearchBtn{
   color: #FAFAFA;
   margin-left: 10px;
-  background-color: #786981;
+  background-color: #995C57;
   border: 1px solid;
   border-color: #9a9a9a;
 }
@@ -356,23 +356,23 @@ form label {
 }
 
 a{
-  color: #786981;
+  color: #995C57;
 }
 
 a:hover{
-  color: #695973;
+  color: #BF4E48;
 
 }
 
 .showPanelBtn:focus { 
   outline: none;
-  color: #786981;
+  color: #995C57;
   border-color:#545454;
 }
 
 .hidePanelBtn:focus { 
   outline: none;
-  color: #786981;
+  color: #995C57;
   border-color:#545454;
 }
 
