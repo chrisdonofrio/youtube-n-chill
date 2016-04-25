@@ -281,7 +281,7 @@ form label {
   color: #786981;
   font-size: 55px;
   margin-left: 90%;
-  margin-top: 50px;
+  margin-top: -20%;
   border: 0;
   position: static;
 }
@@ -297,7 +297,7 @@ form label {
   color: #786981;
   border-color:#545454;
   font-size: 55px;
-  margin-top: 90px;
+  margin-top: -15px;
   margin-left: 60%;
   position: static;
   width: 30px;

@@ -60,8 +60,10 @@ function onPlayerStateChange(event) {
     3 (buffering)
     5 (video cued)
   */
+  //disables pause to keep videos in sync for all viewers
   if(event.data === 2){
     event.target.playVideo();
+    //when video ends
   }else if(event.data === 0) {
     $("iframe").attr("src", "");
     $("iframe").remove();
@@ -72,6 +74,7 @@ function onPlayerStateChange(event) {
     $(".urlInput").val("");
     $(".startVideoUrlBtn").show();
     currentVideo.update({
+      url: "donotdelete",
       vidId: "donotdelete"
     })
   }
