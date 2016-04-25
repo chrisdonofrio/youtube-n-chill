@@ -389,3 +389,7 @@ a:hover{
   height: 130px;
   overflow: auto;
 }
+
+.thumb{
+  margin-bottom: 20px;
+}

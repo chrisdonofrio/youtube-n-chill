@@ -210,14 +210,15 @@ $(document).ready(function() {
         newA.html(resultTitle)
         newA.attr("href", "https://www.youtube.com/watch?v="+videoId);
         newA.attr("target", "_blank");
-        newImg = $("<img>");
+        newBr = $("<br>");
+        newImg = $("<img class='thumb'>");
         newImg.attr("src", response.items[i].snippet.thumbnails.default.url);
         newBr = $("<br>");
         newBtn = $("<button id='"+videoId+"' class='btn btn-priamry addVideoSearchBtn'>");
         newBtn.html("Add To Queue");
         newAlertDiv = $("<div class='alert alert-info videoaddedsearchalert"+videoId+"'>");
         newAlertDiv.html("Added to Queue!");
-        newLi.append(newImg).append(newBtn).append(newBr).append(newA).append(newAlertDiv);
+        newLi.append(newA).append(newBr).append(newImg).append(newBtn).append(newAlertDiv);
         $("#searchResults").append(newLi);
         newAlertDiv.hide();
       }
