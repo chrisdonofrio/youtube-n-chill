@@ -125,7 +125,7 @@ textarea:focus, input:focus {
 }
 
 .searchInput:focus {
-  background-color: #493e50 !important;
+  background-color: #454444 !important;
 }
 
 							/*SEARCH PANEL*/
@@ -216,7 +216,7 @@ textarea:focus, input:focus {
 
 .urlQueueInput:focus,
 .urlInput:focus {
-  background-color: #493e50 !important;
+  background-color: #454444 !important;
 }
 
 							/*ALERTS*/
@@ -276,14 +276,14 @@ form label {
 #registerPassword:focus,
 #loginEmail:focus,
 #loginPassword:focus {
-	background-color: #493e50 !important;
+	background-color: #454444 !important;
 }
 
 #registerUsername:active,
 #registerPassword:active,
 #loginEmail:active,
 #loginPassword:active {
-  background-color: #493e50 !important;
+  background-color: #454444 !important;
 }
 
 							/*TOGGLE PANEL BUTTON*/
