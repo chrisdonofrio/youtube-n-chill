@@ -280,11 +280,10 @@ form label {
   background-color: #545454 !important;
   color: #786981;
   font-size: 55px;
-  margin-left: 210px;
+  margin-left: 90%;
   margin-top: 50px;
   border: 0;
-  position: fixed;
-  left: 115px;
+  position: static;
 }
 
 .hidePanelBtn:hover {
@@ -298,10 +297,10 @@ form label {
   color: #786981;
   border-color:#545454;
   font-size: 55px;
-  margin-top: 50px;
-  margin-left: 20px;
-  position: absolute;
-  left: 65px;
+  margin-top: 90px;
+  margin-left: 60%;
+  position: static;
+  width: 30px;
 }
 
 .showPanelBtn:hover {
