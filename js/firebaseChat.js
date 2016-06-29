@@ -3,9 +3,10 @@
 
     // New users: Creating a user account 
     $("#registerAction").click(function(e) {
+      console.log($("#registerUsername").val() + "@gmail.com")
       event.preventDefault();
       ref.createUser({
-        email    : $("#registerUsername").val(),  
+        email    : $("#registerUsername").val() + "@gmail.com",  
         password : $("#registerPassword").val(),
       }, function(error, userData) {
         if (error) {
@@ -28,7 +29,7 @@
       var loginPassword = $("#loginPassword").val();
       //Firechat function that kicks off authentication
       ref.authWithPassword({
-        email    : loginEmail, 
+        email    : loginEmail + "@gmail.com", 
         password : loginPassword
       }, function(error, authData) {
         if (error) {

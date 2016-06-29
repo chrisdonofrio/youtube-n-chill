@@ -21,19 +21,19 @@
 <body>
   <div class="container-fluid">
     <nav class="navbar navbar-default header">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <h1 class="nav-title"><i class="fa fa-youtube fa-2x"></i> 'N' Chill.</h1>
-          </div>
-        <!--SIGNUP / LOGIN BUTTONS-->
-          <ul class="startButtons nav navbar-right">
-            <label for="signinButton">Login to chat!</label>
-            <li><button type="button" id="signinButton" class="btn btn-default" data-toggle="modal" data-target="#login">Login</button></li>
-            <label for="registerButton">New User? Sign up here!</label>
-            <li><button type="button" id="registerButton" class="btn btn-default" data-toggle="modal" data-target="#registration">Sign Up</button></li>
-          </ul>  
-        </div>
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <h1 class="nav-title"><i class="fa fa-youtube fa-2x"></i> 'N' Chill.</h1>
       </div>
+      <!--SIGNUP / LOGIN BUTTONS-->
+      <ul class="startButtons nav navbar-right">
+        <label for="signinButton">Login to chat!</label>
+        <li><button type="button" id="signinButton" class="btn btn-default" data-toggle="modal" data-target="#login">Login</button></li>
+        <label for="registerButton">New user? Sign up here!</label>
+        <li><button type="button" id="registerButton" class="btn btn-default" data-toggle="modal" data-target="#registration">Sign Up</button></li>
+      </ul>  
+    </div>
+  </div>
     </nav>
     <div class="row-fluid searchRow">
       <div class="col-md-3 searchColumn">
@@ -48,7 +48,6 @@
             <div class="alert alert-danger noSearchTerm" role="alert">
               Enter a search term!
             </div>
-
           </div>
         </div>
       </div>
@@ -68,8 +67,8 @@
         <div class="alert alert-danger embedErrorAlert" id="videoNotFound" role="alert">
          Sorry, the next video in the queue was either private or was deleted from YouTube by the creator, video skipped.<button class="btn btn-primary btn-xs confirmVideoSkippedBtn">OK</button>
         </div>
-		    <div class="video-container">
-		      <input type="text" class="urlInput" placeholder="enter video URL here..." /><button class="btn startVideoUrlBtn btn-primary">Start Watching!</button>
+  	    <div class="video-container">
+  	      <input type="text" class="urlInput" placeholder="enter video URL here..." /><button class="btn startVideoUrlBtn btn-primary">Start Watching!</button>
           <div class="alert alert-danger noTextAlertStart" role="alert">
             Please Enter a valid YouTube URL
           </div>
@@ -93,8 +92,8 @@
               <div class="modal-body">
                 <div id="loginForm"> <!--User login -->
                   <form>
-                    <label for="loginEmail">Your username <span class="example">(username@oursite.io)</span></label>
-                    <p><input type="text" name="login" placeholder="username@ourSite.io" id="loginEmail"></p>
+                    <label for="loginEmail">Username</label>
+                    <p><input type="text" name="login" placeholder="username" id="loginEmail"></p>
                     <label for="loginPassword">Password</label>
                     <p><input type="password" name="password" placeholder="password" id="loginPassword"></p>
                     <p class="submit"><input type="submit" name="commit" value="login" id="loginAction"></p>
@@ -105,44 +104,45 @@
             </div> 
           </div>
         </div>  
-        <div class="modal fade" id="registration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"> <!-- registration modal -->
-          <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="registrationModalLabel">New User? Sign Up to Chat!</h4>
-              </div>
-              <div class="modal-body">
-                <div id="registrationForm"> <!--New user registration form-->
-                  <form>
-                    <label for="registerUsername">Enter your email <span class="example">(used only for logging in)</span></label>
-                    <p><input type="text" name="login" placeholder="username@ourSite.io"  id="registerUsername"></p>
-                    <label for="registerPassword">Create a password</label>
-                    <p><input type="password" name="password" placeholder="password" id="registerPassword"></p>
-                    <label for="registerAction">Send it our way!</label>
-                    <p class="submit"><input type="submit" value="register" id="registerAction"></p>
-                    <span id="regErrorMessage"></span>
-                  </form>
-                </div>
+      </div>
+    </div>
+      <div class="modal fade" id="registration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"> <!-- registration modal -->
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="registrationModalLabel">New user? Sign up to chat!</h4>
+            </div>
+            <div class="modal-body">
+              <div id="registrationForm"> <!--New user registration form-->
+                <form>
+                  <label for="registerUsername">Create a username</label>
+                  <p><input type="text" name="login" placeholder="username"  id="registerUsername"></p>
+                  <label for="registerPassword">Create a password</label>
+                  <p><input type="password" name="password" placeholder="password" id="registerPassword"></p>
+                  <label for="registerAction">Send it our way!</label>
+                  <p class="submit"><input type="submit" value="register" id="registerAction"></p>
+                  <span id="regErrorMessage"></span>
+                </form>
               </div>
             </div>
-          </div> 
-        </div>
+          </div>
+        </div> 
       </div>
-     </div> 
-      <!-- Footer -->
-    <div class="navbar-footer">
-      <nav class="navbar navbar-default navbar-fixed-bottom footer" id="footerQueue"> 
-        <input type="text" class="urlQueueInput" placeholder="enter video URL here..." /><button class="btn addVideoUrlBtn btn-primary">  
-          Added Video to Queue</button>
-        <div class="alert alert-info videoAddedAlert" role="alert">
-          Added to Queue!
-        </div>
-        <div class="alert alert-danger noTextAlertAdded" role="alert">
-         Please Enter a valid YouTube URL
-        </div>
-      </nav>   
     </div>
+    <!-- Footer -->
+  <div class="navbar-footer">
+    <nav class="navbar navbar-default navbar-fixed-bottom footer" id="footerQueue"> 
+      <input type="text" class="urlQueueInput" placeholder="enter video URL here..." /><button class="btn addVideoUrlBtn btn-primary">  
+        Added Video to Queue</button>
+      <div class="alert alert-info videoAddedAlert" role="alert">
+        Added to Queue!
+      </div>
+      <div class="alert alert-danger noTextAlertAdded" role="alert">
+       Please Enter a valid YouTube URL
+      </div>
+    </nav>   
+  </div>
    
 
   <script src="http://www.youtube.com/player_api"></script>

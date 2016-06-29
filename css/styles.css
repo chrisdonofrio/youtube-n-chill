@@ -16,7 +16,7 @@ body {
 
 button {
   font-family: 'Catamaran', sans-serif;
-  text-transform: lowercase;
+  /*text-transform: lowercase;*/
 }
               
 
@@ -52,7 +52,7 @@ text-align: center;
 
 ul label {
 	font-family: 'Catamaran', sans-serif;
-	text-transform: lowercase;
+	/*text-transform: lowercase;*/
 	color: #BF4E48;
 	font-style: italic;
 	margin-right: 15px;
@@ -243,7 +243,7 @@ textarea:focus, input:focus {
 
 .modal-dialog {
 	font-family: 'Catamaran', sans-serif;
-	text-transform: lowercase;
+	/*text-transform: lowercase;*/
 	color: #BF4E48;
 }
 
